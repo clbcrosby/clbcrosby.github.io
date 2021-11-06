@@ -33,16 +33,16 @@ function drawframe ()
   ctx.clearRect(0, 0, Canvas.width, Canvas.height);
   ctx.drawImage(originrock, originrockx - charx, originrocky - chary);     // First sprite in the terrain
   ctx.drawImage(char, (Canvas.width / 2) - 32, (Canvas.height / 2) - 32);     // Player Character
-  ctx.fillText("X: " + (charx / 10) + " Y: " + (chary / 10), 10, 32); // UI element
+  ctx.fillText("X: " + (charx / 8) + " Y: " + (chary / 8), 10, 32); // UI element
   }
 
 // Changes character coordinates when WASD is pressed.
 
 function MyKeyDownHandler (MyEvent) {
-  if (MyEvent.keyCode == 87) {chary = chary - 10;}   // W
-  if (MyEvent.keyCode == 65) {charx = charx - 10;}   // A
-  if (MyEvent.keyCode == 83) {chary = chary + 10;}   // S
-  if (MyEvent.keyCode == 68) {charx = charx + 10;}   // D
+  if (MyEvent.keyCode == 87) {chary = chary - 8;}   // W
+  if (MyEvent.keyCode == 65) {charx = charx - 8;}   // A
+  if (MyEvent.keyCode == 83) {chary = chary + 8;}   // S
+  if (MyEvent.keyCode == 68) {charx = charx + 8;}   // D
   }
 
 addEventListener("keydown", MyKeyDownHandler);
