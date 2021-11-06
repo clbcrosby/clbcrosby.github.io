@@ -80,10 +80,23 @@ var d = 0;
 
 function reposition ()
   {
-  if (w == 1) {chary = chary - 8};
-  if (a == 1) {charx = charx - 8};
-  if (s == 1) {chary = chary + 8};
-  if (d == 1) {charx = charx + 8};
+
+  if (w == 1 && a == 0 && s == 0 && d == 0) {chary = chary - 8}; // W pressed
+  if (w == 0 && a == 1 && s == 0 && d == 0) {charx = charx - 8}; // A pressed
+  if (w == 0 && a == 0 && s == 1 && d == 0) {chary = chary + 8}; // S pressed
+  if (w == 0 && a == 0 && s == 0 && d == 1) {charx = charx + 8}; // D pressed
+
+  if (w == 1 && a == 1 && s == 0 && d == 0) {chary = chary - 4}; // W+A pressed
+  if (w == 1 && a == 1 && s == 0 && d == 0) {charx = charx - 4};
+
+  if (w == 1 && a == 0 && s == 0 && d == 1) {chary = chary - 4}; // W+D pressed
+  if (w == 1 && a == 0 && s == 0 && d == 1) {charx = charx + 4};
+
+  if (w == 0 && a == 1 && s == 1 && d == 0) {chary = chary + 4}; // S+A pressed
+  if (w == 0 && a == 1 && s == 1 && d == 0) {charx = charx - 4};
+
+  if (w == 0 && a == 0 && s == 1 && d == 1) {chary = chary + 4}; // S+D pressed
+  if (w == 0 && a == 0 && s == 1 && d == 1) {charx = charx + 4};
 
   if ((chary - background1y) > 1440) {background1y = background1y + 2160}; // Allows background panel to scroll down forever
   if ((chary - background2y) > 1440) {background2y = background2y + 2160};
@@ -142,8 +155,8 @@ function drawframe ()
   ctx.drawImage(background9, background9x - charx, background9y - chary);
   ctx.drawImage(originrock, originrockx - charx, originrocky - chary);        // non-player sprite
   ctx.drawImage(char, (Canvas.width / 2) - 32, (Canvas.height / 2) - 32);     // player character sprite
-  ctx.fillText("X: " + (charx / 8) + " Y: " + (chary / 8), 10, 32); // UI element
-  reposition ();
+  ctx.fillText("X: " + (charx / 4) + " Y: " + (chary / 4), 10, 32);           // UI element
+  reposition ();                                                              // The above function that changes sprite coords
   }
 
 // detects when WASD is pressed.
