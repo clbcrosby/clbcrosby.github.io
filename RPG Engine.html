@@ -1,0 +1,48 @@
+<HTML>
+<head>
+<title> RPG </title>
+</head>
+<body>
+<canvas id=myCanvas width=1280 height=720 style="background-color: pink">
+</canvas>
+<script>
+var ctx = myCanvas.getContext("2d");
+ctx.font= "32px Arial";
+
+// Game code starts here.
+
+// Sets the starting coordinates for game sprites.
+var charx = 0;
+var chary = 0;
+
+var MyImgx = 0;
+var MyImgy = 0;
+
+// Loads sprite images.
+var MyImg = new Image();
+MyImg.src = "https://clbcrosby.github.io/Ui-charactercreate-classes_warrior.png";
+
+// Clears the canvas and redraws sprites in their current position. 
+function MyTimer () {
+  ctx.clearRect(0, 0, 1280, 720);
+  ctx.drawImage(MyImg, MyImgx - charx, MyImgy - chary);
+  ctx.fillRect(632, 352, 16, 16); // Draws a square in the center of the canvas to be a placeholder for the character.
+  ctx.fillText("X: " + (charx / 10) + " Y: " + (chary / 10), 10, 32); // Placeholder for UI elements- shows current coordinates.
+  }
+
+// Changes character coordinates when WASD is pressed.
+function MyKeyDownHandler (MyEvent) {
+  if (MyEvent.keyCode == 87) {chary = chary - 10;}   // W
+  if (MyEvent.keyCode == 65) {charx = charx - 10;}   // A
+  if (MyEvent.keyCode == 83) {chary = chary + 10;}   // S
+  if (MyEvent.keyCode == 68) {charx = charx + 10;}   // D
+  }
+
+// Sets the rate for redrawing the canvas.
+setInterval(MyTimer, 15);
+addEventListener("keydown", MyKeyDownHandler);
+
+// End of JavaScript.
+</script>
+</body>
+</html>
