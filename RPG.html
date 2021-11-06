@@ -11,7 +11,34 @@ ctx.font= "32px Arial";
 
 // Game code starts here.
 
-// Load sprite images. *I am using 64x64 pixel sprites.
+// Load backgrounds and sprite images. *I am using 64x64 pixel sprites and 1280x720 backgrounds.
+
+var background1 = new Image();
+background1.src = "https://clbcrosby.github.io/background1.png"
+
+var background2 = new Image();
+background2.src = "https://clbcrosby.github.io/background2.png"
+
+var background3 = new Image();
+background3.src = "https://clbcrosby.github.io/background3.png"
+
+var background4 = new Image();
+background4.src = "https://clbcrosby.github.io/background4.png"
+
+var background5 = new Image();
+background5.src = "https://clbcrosby.github.io/background5.png"
+
+var background6 = new Image();
+background6.src = "https://clbcrosby.github.io/background6.png"
+
+var background7 = new Image();
+background7.src = "https://clbcrosby.github.io/background7.png"
+
+var background8 = new Image();
+background8.src = "https://clbcrosby.github.io/background8.png"
+
+var background9 = new Image();
+background9.src = "https://clbcrosby.github.io/background9.png"
 
 var char = new Image();
 char.src = "https://clbcrosby.github.io/Blank.png"
@@ -25,12 +52,39 @@ var charx = 0;
 var chary = 0;
 var originrockx = 0;
 var originrocky = 0;
+var background1x = -1280;
+var background1y = -720;
+var background2x = -1280;
+var background2y = 0;
+var background3x = -1280;
+var background3y = 720;
+var background4x = 0;
+var background4y = -720;
+var background5x = 0;
+var background5y = 0;
+var background6x = 0;
+var background6y = 720;
+var background7x = 1280;
+var background7y = -720;
+var background8x = 1280;
+var background8y = 0;
+var background9x = 1280;
+var background9y = 720;
 
 // Clears the canvas and redraws sprites at their current coordinates. 
 
 function drawframe ()
   {
   ctx.clearRect(0, 0, Canvas.width, Canvas.height);
+  ctx.drawImage(background1, background1x - charx, background1y - chary);
+  ctx.drawImage(background2, background2x - charx, background2y - chary);
+  ctx.drawImage(background3, background3x - charx, background3y - chary);
+  ctx.drawImage(background4, background4x - charx, background4y - chary);
+  ctx.drawImage(background5, background5x - charx, background5y - chary);
+  ctx.drawImage(background6, background6x - charx, background6y - chary);
+  ctx.drawImage(background7, background7x - charx, background7y - chary);
+  ctx.drawImage(background8, background8x - charx, background8y - chary);
+  ctx.drawImage(background9, background9x - charx, background9y - chary);
   ctx.drawImage(originrock, originrockx - charx, originrocky - chary);     // First sprite in the terrain
   ctx.drawImage(char, (Canvas.width / 2) - 32, (Canvas.height / 2) - 32);     // Player Character
   ctx.fillText("X: " + (charx / 8) + " Y: " + (chary / 8), 10, 32); // UI element
