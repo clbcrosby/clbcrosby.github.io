@@ -3,34 +3,41 @@
 <title> RPG </title>
 </head>
 <body>
-<canvas id=myCanvas width=1280 height=720 style="background-color: pink">
+<canvas id=Canvas width=1280 height=720 style="background-color: pink">
 </canvas>
 <script>
-var ctx = myCanvas.getContext("2d");
+var ctx = Canvas.getContext("2d");
 ctx.font= "32px Arial";
 
 // Game code starts here.
 
-// Sets the starting coordinates for game sprites.
+// Load sprite images. *I am using 64x64 pixel sprites.
+
+var char = new Image();
+char.src = "https://clbcrosby.github.io/Blank.png"
+
+var originrock = new Image();
+originrock.src = "https://clbcrosby.github.io/Black.png";
+
+// Set the starting coordinates for game sprites.
+
 var charx = 0;
 var chary = 0;
+var originrockx = 0;
+var originrocky = 0;
 
-var MyImgx = 0;
-var MyImgy = 0;
+// Clears the canvas and redraws sprites at their current coordinates. 
 
-// Loads sprite images.
-var MyImg = new Image();
-MyImg.src = "https://clbcrosby.github.io/Ui-charactercreate-classes_warrior.png";
-
-// Clears the canvas and redraws sprites in their current position. 
-function MyTimer () {
-  ctx.clearRect(0, 0, 1280, 720);
-  ctx.drawImage(MyImg, MyImgx - charx, MyImgy - chary);
-  ctx.fillRect(632, 352, 16, 16); // Draws a square in the center of the canvas to be a placeholder for the character.
-  ctx.fillText("X: " + (charx / 10) + " Y: " + (chary / 10), 10, 32); // Placeholder for UI elements- shows current coordinates.
+function drawframe ()
+  {
+  ctx.clearRect(0, 0, Canvas.width, Canvas.height);
+  ctx.drawImage(originrock, originrockx - charx, originrocky - chary);     // First sprite in the terrain
+  ctx.drawImage(char, (Canvas.width / 2) - 32, (Canvas.height / 2) - 32);     // Player Character
+  ctx.fillText("X: " + (charx / 10) + " Y: " + (chary / 10), 10, 32); // UI element
   }
 
 // Changes character coordinates when WASD is pressed.
+
 function MyKeyDownHandler (MyEvent) {
   if (MyEvent.keyCode == 87) {chary = chary - 10;}   // W
   if (MyEvent.keyCode == 65) {charx = charx - 10;}   // A
@@ -38,9 +45,12 @@ function MyKeyDownHandler (MyEvent) {
   if (MyEvent.keyCode == 68) {charx = charx + 10;}   // D
   }
 
-// Sets the rate for redrawing the canvas.
-setInterval(MyTimer, 15);
 addEventListener("keydown", MyKeyDownHandler);
+
+// Set the rates for executing recurring funtions.
+
+setInterval(drawframe, 15);
+
 
 // End of JavaScript.
 </script>
