@@ -80,10 +80,50 @@ var d = 0;
 
 function reposition ()
   {
-  if (w == 1) {chary = chary - 8;}
-  if (a == 1) {charx = charx - 8;}
-  if (s == 1) {chary = chary + 8;}
-  if (d == 1) {charx = charx + 8;}
+  if (w == 1) {chary = chary - 8};
+  if (a == 1) {charx = charx - 8};
+  if (s == 1) {chary = chary + 8};
+  if (d == 1) {charx = charx + 8};
+
+  if ((chary - background1y) > 1440) {background1y = background1y + 2160}; // Allows background panel to scroll down forever
+  if ((chary - background2y) > 1440) {background2y = background2y + 2160};
+  if ((chary - background3y) > 1440) {background3y = background3y + 2160};
+  if ((chary - background4y) > 1440) {background4y = background4y + 2160};
+  if ((chary - background5y) > 1440) {background5y = background5y + 2160};
+  if ((chary - background6y) > 1440) {background6y = background6y + 2160};
+  if ((chary - background7y) > 1440) {background7y = background7y + 2160};
+  if ((chary - background8y) > 1440) {background8y = background8y + 2160};
+  if ((chary - background9y) > 1440) {background9y = background9y + 2160};
+
+  if ((background1y - chary) > 1440) {background1y = background1y - 2160}; // Allows background panels to scroll up forever
+  if ((background2y - chary) > 1440) {background2y = background2y - 2160};
+  if ((background3y - chary) > 1440) {background3y = background3y - 2160};
+  if ((background4y - chary) > 1440) {background4y = background4y - 2160};
+  if ((background5y - chary) > 1440) {background5y = background5y - 2160};
+  if ((background6y - chary) > 1440) {background6y = background6y - 2160};
+  if ((background7y - chary) > 1440) {background7y = background7y - 2160};
+  if ((background8y - chary) > 1440) {background8y = background8y - 2160};
+  if ((background9y - chary) > 1440) {background9y = background9y - 2160};
+
+  if ((charx - background1x) > 2560) {background1x = background1x + 3840}; // Allows background panel to scroll right forever
+  if ((charx - background2x) > 2560) {background2x = background2x + 3840};
+  if ((charx - background3x) > 2560) {background3x = background3x + 3840};
+  if ((charx - background4x) > 2560) {background4x = background4x + 3840};
+  if ((charx - background5x) > 2560) {background5x = background5x + 3840};
+  if ((charx - background6x) > 2560) {background6x = background6x + 3840};
+  if ((charx - background7x) > 2560) {background7x = background7x + 3840};
+  if ((charx - background8x) > 2560) {background8x = background8x + 3840};
+  if ((charx - background9x) > 2560) {background9x = background9x + 3840};
+
+  if ((background1x - charx) > 2560) {background1x = background1x - 3840}; // Allows background panel to scroll left forever
+  if ((background2x - charx) > 2560) {background2x = background2x - 3840};
+  if ((background3x - charx) > 2560) {background3x = background3x - 3840};
+  if ((background4x - charx) > 2560) {background4x = background4x - 3840};
+  if ((background5x - charx) > 2560) {background5x = background5x - 3840};
+  if ((background6x - charx) > 2560) {background6x = background6x - 3840};
+  if ((background7x - charx) > 2560) {background7x = background7x - 3840};
+  if ((background8x - charx) > 2560) {background8x = background8x - 3840};
+  if ((background9x - charx) > 2560) {background9x = background9x - 3840};
   }
 
 // Clears the canvas and redraws sprites at their current coordinates.
@@ -100,13 +140,13 @@ function drawframe ()
   ctx.drawImage(background7, background7x - charx, background7y - chary);
   ctx.drawImage(background8, background8x - charx, background8y - chary);
   ctx.drawImage(background9, background9x - charx, background9y - chary);
-  ctx.drawImage(originrock, originrockx - charx, originrocky - chary);     // First sprite in the terrain
-  ctx.drawImage(char, (Canvas.width / 2) - 32, (Canvas.height / 2) - 32);     // Player Character
+  ctx.drawImage(originrock, originrockx - charx, originrocky - chary);        // non-player sprite
+  ctx.drawImage(char, (Canvas.width / 2) - 32, (Canvas.height / 2) - 32);     // player character sprite
   ctx.fillText("X: " + (charx / 8) + " Y: " + (chary / 8), 10, 32); // UI element
   reposition ();
   }
 
-// Changes character coordinates when WASD is pressed.
+// detects when WASD is pressed.
 
 function MyKeyDownHandler (MyEvent)
   {
@@ -128,7 +168,7 @@ function MyKeyUpHandler (MyEvent)
 addEventListener("keydown", MyKeyDownHandler);
 addEventListener("keyup", MyKeyUpHandler);
 
-// Set the rates for executing recurring funtions.
+// Set the rates for drawing new frames.
 
 setInterval(drawframe, 15);
 
