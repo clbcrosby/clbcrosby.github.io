@@ -71,7 +71,22 @@ var background8y = 0;
 var background9x = 1280;
 var background9y = 720;
 
-// Clears the canvas and redraws sprites at their current coordinates. 
+// handles repositioning sprites
+
+var w = 0;
+var a = 0;
+var s = 0;
+var d = 0;
+
+function reposition ()
+  {
+  if (w == 1) {chary = chary - 8;}
+  if (a == 1) {charx = charx - 8;}
+  if (s == 1) {chary = chary + 8;}
+  if (d == 1) {charx = charx + 8;}
+  }
+
+// Clears the canvas and redraws sprites at their current coordinates.
 
 function drawframe ()
   {
@@ -88,18 +103,30 @@ function drawframe ()
   ctx.drawImage(originrock, originrockx - charx, originrocky - chary);     // First sprite in the terrain
   ctx.drawImage(char, (Canvas.width / 2) - 32, (Canvas.height / 2) - 32);     // Player Character
   ctx.fillText("X: " + (charx / 8) + " Y: " + (chary / 8), 10, 32); // UI element
+  reposition ();
   }
 
 // Changes character coordinates when WASD is pressed.
 
-function MyKeyDownHandler (MyEvent) {
-  if (MyEvent.keyCode == 87) {chary = chary - 8;}   // W
-  if (MyEvent.keyCode == 65) {charx = charx - 8;}   // A
-  if (MyEvent.keyCode == 83) {chary = chary + 8;}   // S
-  if (MyEvent.keyCode == 68) {charx = charx + 8;}   // D
+function MyKeyDownHandler (MyEvent)
+  {
+  if (MyEvent.keyCode == 87) {w = 1};   // W
+  if (MyEvent.keyCode == 65) {a = 1};   // A
+  if (MyEvent.keyCode == 83) {s = 1};   // S
+  if (MyEvent.keyCode == 68) {d = 1};   // D
+  MyEvent.preventDefault ()
+  }
+
+function MyKeyUpHandler (MyEvent)
+  {
+  if (MyEvent.keyCode == 87) {w = 0};  // W
+  if (MyEvent.keyCode == 65) {a = 0};  // A
+  if (MyEvent.keyCode == 83) {s = 0};  // S
+  if (MyEvent.keyCode == 68) {d = 0};  // D
   }
 
 addEventListener("keydown", MyKeyDownHandler);
+addEventListener("keyup", MyKeyUpHandler);
 
 // Set the rates for executing recurring funtions.
 
