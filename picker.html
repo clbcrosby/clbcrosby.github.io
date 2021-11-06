@@ -1,0 +1,1112 @@
+<HTML>
+ <head>
+  <title> Random Race/Class Picker </title>
+ </head>
+
+<body>
+ <canvas id=myCanvas width=192 height=64 style="background-color: white">
+ </canvas>
+ <script>
+var ctx = myCanvas.getContext("2d");
+ctx.font= "60px Arial";
+
+// A program to pick a random race/class combination in vanilla World of Warcraft.
+
+// A function to generate a random number and assign it to a variable.
+function RandInt(max) { 
+   n = Math.floor(Math.random() * max);  
+   return(n);  
+   }  
+
+// Generate a random number up to 39 and assign it to a variable.
+var number= RandInt(39);
+
+// make it 1-40
+var number= number + 1;
+
+if(number== 1)
+            {
+               // ctx.fillText("Human Warrior", 10, 50);
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/c/c0/Human2.png/revision/latest?cb=20150413090712";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/dc/Human1.png/revision/latest?cb=20150413090805";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/3/37/Ui-charactercreate-classes_warrior.png/revision/latest/scale-to-width-down/64?cb=20150502162538";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 2)
+            {
+               // ctx.fillText("Human Paladin", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/c/c0/Human2.png/revision/latest?cb=20150413090712";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/dc/Human1.png/revision/latest?cb=20150413090805";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/8/80/Ui-charactercreate-classes_paladin.png/revision/latest/scale-to-width-down/64?cb=20121102071452";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 3)
+            {
+               // ctx.fillText("Human Rogue", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/c/c0/Human2.png/revision/latest?cb=20150413090712";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/dc/Human1.png/revision/latest?cb=20150413090805";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/b/b1/Ui-charactercreate-classes_rogue.png/revision/latest/scale-to-width-down/64?cb=20121102071540";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 4)
+            {
+               // ctx.fillText("Human Priest", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/c/c0/Human2.png/revision/latest?cb=20150413090712";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/dc/Human1.png/revision/latest?cb=20150413090805";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/0/0f/Ui-charactercreate-classes_priest.png/revision/latest/scale-to-width-down/64?cb=20121102071506";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 5)
+            {
+               // ctx.fillText("Human Mage", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/c/c0/Human2.png/revision/latest?cb=20150413090712";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/dc/Human1.png/revision/latest?cb=20150413090805";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/5/56/Ui-charactercreate-classes_mage.png/revision/latest/scale-to-width-down/64?cb=20121102071438";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 6)
+            {
+               // ctx.fillText("Human Warlock", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/c/c0/Human2.png/revision/latest?cb=20150413090712";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/dc/Human1.png/revision/latest?cb=20150413090805";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/c/cf/Ui-charactercreate-classes_warlock.png/revision/latest/scale-to-width-down/64?cb=20121102071603";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 7)
+            {
+               // ctx.fillText("Dwarf Warrior", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/c/cf/Dwarf2.png/revision/latest?cb=20150413091106";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/0/0a/Dwarf1.png/revision/latest?cb=20150413091052";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/3/37/Ui-charactercreate-classes_warrior.png/revision/latest/scale-to-width-down/64?cb=20150502162538";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 8)
+            {
+               // ctx.fillText("Dwarf Paladin", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/c/cf/Dwarf2.png/revision/latest?cb=20150413091106";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/0/0a/Dwarf1.png/revision/latest?cb=20150413091052";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/8/80/Ui-charactercreate-classes_paladin.png/revision/latest/scale-to-width-down/64?cb=20121102071452";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 9)
+            {
+               // ctx.fillText("Dwarf Hunter", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/c/cf/Dwarf2.png/revision/latest?cb=20150413091106";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/0/0a/Dwarf1.png/revision/latest?cb=20150413091052";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/4/4e/Ui-charactercreate-classes_hunter.png/revision/latest/scale-to-width-down/64?cb=20121102071426";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 10)
+            {
+               // ctx.fillText("Dwarf Rogue", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/c/cf/Dwarf2.png/revision/latest?cb=20150413091106";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/0/0a/Dwarf1.png/revision/latest?cb=20150413091052";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/b/b1/Ui-charactercreate-classes_rogue.png/revision/latest/scale-to-width-down/64?cb=20121102071540";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 11)
+            {
+               // ctx.fillText("Dwarf Priest", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/c/cf/Dwarf2.png/revision/latest?cb=20150413091106";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/0/0a/Dwarf1.png/revision/latest?cb=20150413091052";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/0/0f/Ui-charactercreate-classes_priest.png/revision/latest/scale-to-width-down/64?cb=20121102071506";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 12)
+            {
+              //  ctx.fillText("Night Elf Warrior", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/b/b9/Night_Elf2.png/revision/latest?cb=20150413091150";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/a/ac/Night_Elf1.png/revision/latest?cb=20150413091139";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/3/37/Ui-charactercreate-classes_warrior.png/revision/latest/scale-to-width-down/64?cb=20150502162538";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 13)
+            {
+              //  ctx.fillText("Night Elf Hunter", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/b/b9/Night_Elf2.png/revision/latest?cb=20150413091150";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/a/ac/Night_Elf1.png/revision/latest?cb=20150413091139";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/4/4e/Ui-charactercreate-classes_hunter.png/revision/latest/scale-to-width-down/64?cb=20121102071426";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 14)
+            {
+              //  ctx.fillText("Night Elf Rogue", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/b/b9/Night_Elf2.png/revision/latest?cb=20150413091150";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/a/ac/Night_Elf1.png/revision/latest?cb=20150413091139";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/b/b1/Ui-charactercreate-classes_rogue.png/revision/latest/scale-to-width-down/64?cb=20121102071540";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 15)
+            {
+              //  ctx.fillText("Night Elf Priest", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/b/b9/Night_Elf2.png/revision/latest?cb=20150413091150";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/a/ac/Night_Elf1.png/revision/latest?cb=20150413091139";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/0/0f/Ui-charactercreate-classes_priest.png/revision/latest/scale-to-width-down/64?cb=20121102071506";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 16)
+            {
+              //  ctx.fillText("Night Elf Druid", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/b/b9/Night_Elf2.png/revision/latest?cb=20150413091150";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/a/ac/Night_Elf1.png/revision/latest?cb=20150413091139";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/6/6f/Ui-charactercreate-classes_druid.png/revision/latest/scale-to-width-down/64?cb=20121102071358";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 17)
+            {
+               // ctx.fillText("Gnome Warrior", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/a/a9/Gnome2.png/revision/latest?cb=20150413091215";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/1/1e/Gnome1.png/revision/latest?cb=20150413091223";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/3/37/Ui-charactercreate-classes_warrior.png/revision/latest/scale-to-width-down/64?cb=20150502162538";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 18)
+            {
+              //  ctx.fillText("Gnome Rogue", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/a/a9/Gnome2.png/revision/latest?cb=20150413091215";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/1/1e/Gnome1.png/revision/latest?cb=20150413091223";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/b/b1/Ui-charactercreate-classes_rogue.png/revision/latest/scale-to-width-down/64?cb=20121102071540";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 19)
+            {
+              //  ctx.fillText("Gnome Mage", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/a/a9/Gnome2.png/revision/latest?cb=20150413091215";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/1/1e/Gnome1.png/revision/latest?cb=20150413091223";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/5/56/Ui-charactercreate-classes_mage.png/revision/latest/scale-to-width-down/64?cb=20121102071438";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 20)
+            {
+              //  ctx.fillText("Gnome Warlock", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/a/a9/Gnome2.png/revision/latest?cb=20150413091215";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/1/1e/Gnome1.png/revision/latest?cb=20150413091223";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/c/cf/Ui-charactercreate-classes_warlock.png/revision/latest/scale-to-width-down/64?cb=20121102071603";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 21)
+            {
+               // ctx.fillText("Orc Warrior", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/de/Orc2.png/revision/latest?cb=20150413092505";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/9/9f/Orc1.png/revision/latest?cb=20150413092454";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/3/37/Ui-charactercreate-classes_warrior.png/revision/latest/scale-to-width-down/64?cb=20150502162538";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 22)
+            {
+              //  ctx.fillText("Orc Hunter", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/de/Orc2.png/revision/latest?cb=20150413092505";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/9/9f/Orc1.png/revision/latest?cb=20150413092454";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/4/4e/Ui-charactercreate-classes_hunter.png/revision/latest/scale-to-width-down/64?cb=20121102071426";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 23)
+            {
+               // ctx.fillText("Orc Rogue", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/de/Orc2.png/revision/latest?cb=20150413092505";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/9/9f/Orc1.png/revision/latest?cb=20150413092454";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/b/b1/Ui-charactercreate-classes_rogue.png/revision/latest/scale-to-width-down/64?cb=20121102071540";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 24)
+            {
+               // ctx.fillText("Orc Shaman", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/de/Orc2.png/revision/latest?cb=20150413092505";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/9/9f/Orc1.png/revision/latest?cb=20150413092454";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/3/3e/Ui-charactercreate-classes_shaman.png/revision/latest/scale-to-width-down/64?cb=20121102071556";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 25)
+            {
+               // ctx.fillText("Orc Warlock", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/de/Orc2.png/revision/latest?cb=20150413092505";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/9/9f/Orc1.png/revision/latest?cb=20150413092454";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/c/cf/Ui-charactercreate-classes_warlock.png/revision/latest/scale-to-width-down/64?cb=20121102071603";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 26)
+            {
+              //  ctx.fillText("Undead Warrior", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/4/48/Forsaken2.png/revision/latest?cb=20150413092409";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/8/80/Forsaken1.png/revision/latest?cb=20150413092424";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/3/37/Ui-charactercreate-classes_warrior.png/revision/latest/scale-to-width-down/64?cb=20150502162538";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 27)
+            {
+              //  ctx.fillText("Undead Rogue", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/4/48/Forsaken2.png/revision/latest?cb=20150413092409";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/8/80/Forsaken1.png/revision/latest?cb=20150413092424";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/b/b1/Ui-charactercreate-classes_rogue.png/revision/latest/scale-to-width-down/64?cb=20121102071540";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 28)
+            {
+             //   ctx.fillText("Undead Priest", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/4/48/Forsaken2.png/revision/latest?cb=20150413092409";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/8/80/Forsaken1.png/revision/latest?cb=20150413092424";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/0/0f/Ui-charactercreate-classes_priest.png/revision/latest/scale-to-width-down/64?cb=20121102071506";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 29)
+            {
+               // ctx.fillText("Undead Mage", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/4/48/Forsaken2.png/revision/latest?cb=20150413092409";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/8/80/Forsaken1.png/revision/latest?cb=20150413092424";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/5/56/Ui-charactercreate-classes_mage.png/revision/latest/scale-to-width-down/64?cb=20121102071438";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 30)
+            {
+              //  ctx.fillText("Undead Warlock", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/4/48/Forsaken2.png/revision/latest?cb=20150413092409";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/8/80/Forsaken1.png/revision/latest?cb=20150413092424";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/c/cf/Ui-charactercreate-classes_warlock.png/revision/latest/scale-to-width-down/64?cb=20121102071603";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 31)
+            {
+              //  ctx.fillText("Tauren Warrior", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/d2/Tauren2.png/revision/latest?cb=20150413092332";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/c/c0/Tauren1.png/revision/latest?cb=20150413092330";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/3/37/Ui-charactercreate-classes_warrior.png/revision/latest/scale-to-width-down/64?cb=20150502162538";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 32)
+            {
+              //  ctx.fillText("Tauren Hunter", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/d2/Tauren2.png/revision/latest?cb=20150413092332";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/c/c0/Tauren1.png/revision/latest?cb=20150413092330";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/4/4e/Ui-charactercreate-classes_hunter.png/revision/latest/scale-to-width-down/64?cb=20121102071426";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 33)
+            {
+               // ctx.fillText("Tauren Shamam", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/d2/Tauren2.png/revision/latest?cb=20150413092332";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/c/c0/Tauren1.png/revision/latest?cb=20150413092330";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/3/3e/Ui-charactercreate-classes_shaman.png/revision/latest/scale-to-width-down/64?cb=20121102071556";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 34)
+            {
+              //  ctx.fillText("Tauren Druid", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/d2/Tauren2.png/revision/latest?cb=20150413092332";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/c/c0/Tauren1.png/revision/latest?cb=20150413092330";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/6/6f/Ui-charactercreate-classes_druid.png/revision/latest/scale-to-width-down/64?cb=20121102071358";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 35)
+            {
+              //  ctx.fillText("Troll Warrior", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/d0/Troll2.png/revision/latest?cb=20150413092236";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/db/Troll1.png/revision/latest?cb=20150413092238";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/3/37/Ui-charactercreate-classes_warrior.png/revision/latest/scale-to-width-down/64?cb=20150502162538";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 36)
+            {
+              //  ctx.fillText("Troll Hunter", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/d0/Troll2.png/revision/latest?cb=20150413092236";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/db/Troll1.png/revision/latest?cb=20150413092238";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/4/4e/Ui-charactercreate-classes_hunter.png/revision/latest/scale-to-width-down/64?cb=20121102071426";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 37)
+            {
+              //  ctx.fillText("Troll Rogue", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/d0/Troll2.png/revision/latest?cb=20150413092236";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/db/Troll1.png/revision/latest?cb=20150413092238";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/b/b1/Ui-charactercreate-classes_rogue.png/revision/latest/scale-to-width-down/64?cb=20121102071540";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 38)
+            {
+              //  ctx.fillText("Troll Priest", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/d0/Troll2.png/revision/latest?cb=20150413092236";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/db/Troll1.png/revision/latest?cb=20150413092238";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/0/0f/Ui-charactercreate-classes_priest.png/revision/latest/scale-to-width-down/64?cb=20121102071506";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else if(number== 39)
+            {
+               // ctx.fillText("Troll Shaman", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/d0/Troll2.png/revision/latest?cb=20150413092236";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/db/Troll1.png/revision/latest?cb=20150413092238";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/3/3e/Ui-charactercreate-classes_shaman.png/revision/latest/scale-to-width-down/64?cb=20121102071556";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+        else
+            {
+               // ctx.fillText("Troll Mage", 10, 50);
+
+
+var male = new Image();
+male.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/d0/Troll2.png/revision/latest?cb=20150413092236";
+function drawm () {
+  ctx.drawImage(male, 0, 0);
+  }
+setInterval(drawm, 1);
+
+var fem = new Image();
+fem.src = "https://static.wikia.nocookie.net/vanilla-wow/images/d/db/Troll1.png/revision/latest?cb=20150413092238";
+function drawf () {
+  ctx.drawImage(fem, 64, 0);
+  }
+setInterval(drawf, 1);
+
+var cls = new Image();
+cls.src = "https://static.wikia.nocookie.net/vanilla-wow/images/5/56/Ui-charactercreate-classes_mage.png/revision/latest/scale-to-width-down/64?cb=20121102071438";
+function drawclass () {
+  ctx.drawImage(cls, 128, 0);
+  }
+setInterval(drawclass, 1);
+
+            }
+
+// print your number
+// alert("You roll a magic die. It could have been any number between 1 and 40, but this time it was " + number);
+
+</script>
+</body>
+</html>
