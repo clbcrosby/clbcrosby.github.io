@@ -1,0 +1,315 @@
+<HTML>
+  <head>
+    <title> Random Race/Class Picker </title>
+  </head>
+
+  <body>
+    <canvas id=Canvas width=192 height=64 style="background-color: white">
+    </canvas>
+
+  <script>
+    var ctx = Canvas.getContext("2d");
+
+// A program to pick a random race/class combination in vanilla World of Warcraft.
+
+// Load image asssets.
+
+var Human1 = new Image();
+Human1.src = "https://clbcrosby.github.io/Human1.png";
+
+var Human2 = new Image();
+Human2.src = "https://clbcrosby.github.io/Human2.png";
+
+var Dwarf1 = new Image();
+Dwarf1.src = "https://clbcrosby.github.io/Dwarf1.png";
+
+var Dwarf2 = new Image();
+Dwarf2.src = "https://clbcrosby.github.io/Dwarf2.png";
+
+var Gnome1 = new Image();
+Gnome1.src = "https://clbcrosby.github.io/Gnome1.png";
+
+var Gnome2 = new Image();
+Gnome2.src = "https://clbcrosby.github.io/Gnome2.png";
+
+var NightElf1 = new Image();
+NightElf1.src = "https://clbcrosby.github.io/NightElf1.png";
+
+var NightElf2 = new Image();
+NightElf2.src = "https://clbcrosby.github.io/NightElf2.png";
+
+var Orc1 = new Image();
+Orc1.src = "https://clbcrosby.github.io/Orc1.png";
+
+var Orc2 = new Image();
+Orc2.src = "https://clbcrosby.github.io/Orc2.png";
+
+var Undead1 = new Image();
+Undead1.src = "https://clbcrosby.github.io/Forsaken1.png";
+
+var Undead2 = new Image();
+Undead2.src = "https://clbcrosby.github.io/Forsaken2.png";
+
+var Tauren1 = new Image();
+Tauren1.src = "https://clbcrosby.github.io/Tauren1.png";
+
+var Tauren2 = new Image();
+Tauren2.src = "https://clbcrosby.github.io/Tauren2.png";
+
+var Troll1 = new Image();
+Troll1.src = "https://clbcrosby.github.io/Troll1.png";
+
+var Troll2 = new Image();
+Troll2.src = "https://clbcrosby.github.io/Troll2.png";
+
+var warrior = new Image();
+warrior.src = "https://clbcrosby.github.io/warrior.png";
+
+var hunter = new Image();
+hunter.src = "https://clbcrosby.github.io/hunter.png";
+
+var mage = new Image();
+mage.src = "https://clbcrosby.github.io/mage.png";
+
+var paladin = new Image();
+paladin.src = "https://clbcrosby.github.io/paladin.png";
+
+var priest = new Image();
+priest.src = "https://clbcrosby.github.io/priest.png";
+
+var rogue = new Image();
+rogue.src = "https://clbcrosby.github.io/rogue.png";
+
+var shaman = new Image();
+shaman.src = "https://clbcrosby.github.io/shaman.png";
+
+var warlock = new Image();
+warlock.src = "https://clbcrosby.github.io/warlock.png";
+
+// A function to generate random numbers in a specified range.
+
+function RandInt(max) { 
+   n = Math.floor(Math.random() * max);  
+   return(n);  
+}  
+
+// A function to generate a random number up to 39 and assign it to a variable then draw the result to the canvas.
+
+function letsRoll () {
+  var number= RandInt(39);
+  if (number == 0) {     // Human Warrior
+    ctx.drawImage(Human1, 0, 0);
+    ctx.drawImage(Human2, 64, 0);
+    ctx.drawImage(warrior, 128, 0);
+  }
+  if (number == 1) {     // Human Paladin
+    ctx.drawImage(Human1, 0, 0);
+    ctx.drawImage(Human2, 64, 0);
+    ctx.drawImage(paladin, 128, 0);          
+  }
+  if (number == 2) {     // Human Rogue
+    ctx.drawImage(Human1, 0, 0);
+    ctx.drawImage(Human2, 64, 0);
+    ctx.drawImage(rogue, 128, 0); 
+  }
+  if (number == 3) {     // Human Priest
+    ctx.drawImage(Human1, 0, 0);
+    ctx.drawImage(Human2, 64, 0);
+    ctx.drawImage(priest, 128, 0); 
+  }
+  if (number == 4) {     // Human Mage
+    ctx.drawImage(Human1, 0, 0);
+    ctx.drawImage(Human2, 64, 0);
+    ctx.drawImage(mage, 128, 0);
+  }
+  if (number == 5) {     // Human Warlock
+    ctx.drawImage(Human1, 0, 0);
+    ctx.drawImage(Human2, 64, 0);
+    ctx.drawImage(warlock, 128, 0);
+  }
+  if (number == 6) {     // Dwarf Warrior
+    ctx.drawImage(Dwarf1, 0, 0);
+    ctx.drawImage(Dwarf2, 64, 0);
+    ctx.drawImage(warrior, 128, 0);
+  }
+  if (number == 7) {     // Dwarf Paladin
+    ctx.drawImage(Dwarf1, 0, 0);
+    ctx.drawImage(Dwarf2, 64, 0);
+    ctx.drawImage(paladin, 128, 0);
+  }
+  if (number == 8) {     // Dwarf Hunter
+    ctx.drawImage(Dwarf1, 0, 0);
+    ctx.drawImage(Dwarf2, 64, 0);
+    ctx.drawImage(hunter, 128, 0);
+  }
+  if (number == 9) {     // Dwarf Rogue
+    ctx.drawImage(Dwarf1, 0, 0);
+    ctx.drawImage(Dwarf2, 64, 0);
+    ctx.drawImage(rogue, 128, 0);
+  }
+  if (number == 10) {     // Dwarf Priest
+    ctx.drawImage(Dwarf1, 0, 0);
+    ctx.drawImage(Dwarf2, 64, 0);
+    ctx.drawImage(priest, 128, 0);
+  }
+  if (number == 11) {     // Night Elf Warrior
+    ctx.drawImage(NightElf1, 0, 0);
+    ctx.drawImage(NightElf2, 64, 0);
+    ctx.drawImage(warrior, 128, 0);
+  }
+  if (number == 12) {     // Night Elf Hunter
+    ctx.drawImage(NightElf1, 0, 0);
+    ctx.drawImage(NightElf2, 64, 0);
+    ctx.drawImage(hunter, 128, 0);
+  }
+  if (number == 13) {     // Night Elf Rogue
+    ctx.drawImage(NightElf1, 0, 0);
+    ctx.drawImage(NightElf2, 64, 0);
+    ctx.drawImage(rogue, 128, 0);
+  }
+  if (number == 14) {     // Night Elf Priest
+    ctx.drawImage(NightElf1, 0, 0);
+    ctx.drawImage(NightElf2, 64, 0);
+    ctx.drawImage(priest, 128, 0);
+  }
+  if (number == 15) {     // Night Elf Druid
+    ctx.drawImage(NightElf1, 0, 0);
+    ctx.drawImage(NightElf2, 64, 0);
+    ctx.drawImage(druid, 128, 0);
+  }
+  if (number == 16) {    // Gnome Warrior
+    ctx.drawImage(Gnome1, 0, 0);
+    ctx.drawImage(Gnome2, 64, 0);
+    ctx.drawImage(warrior, 128, 0);
+  }
+  if (number == 17) {     // Gnome Rogue
+    ctx.drawImage(Gnome1, 0, 0);
+    ctx.drawImage(Gnome2, 64, 0);
+    ctx.drawImage(rogue, 128, 0);
+  }
+  if (number == 18) {     // Gnome Mage
+    ctx.drawImage(Gnome1, 0, 0);
+    ctx.drawImage(Gnome2, 64, 0);
+    ctx.drawImage(mage, 128, 0);
+  }
+  if (number == 19) {     // Gnome Warlock
+    ctx.drawImage(Gnome1, 0, 0);
+    ctx.drawImage(Gnome2, 64, 0);
+    ctx.drawImage(warlock, 128, 0);
+  }
+  if (number == 20) {     // Orc Warrior
+    ctx.drawImage(Orc1, 0, 0);
+    ctx.drawImage(Orc2, 64, 0);
+    ctx.drawImage(warrior, 128, 0);
+  }
+  if (number == 21) {     // Orc Hunter
+    ctx.drawImage(Orc1, 0, 0);
+    ctx.drawImage(Orc2, 64, 0);
+    ctx.drawImage(hunter, 128, 0);
+  }
+  if (number == 22) {     // Orc Rogue
+    ctx.drawImage(Orc1, 0, 0);
+    ctx.drawImage(Orc2, 64, 0);
+    ctx.drawImage(rogue, 128, 0);
+  }
+  if (number == 23) {     // Orc Shaman
+    ctx.drawImage(Orc1, 0, 0);
+    ctx.drawImage(Orc2, 64, 0);
+    ctx.drawImage(shaman, 128, 0);
+  }
+  if (number == 24) {     // Orc Warlock
+    ctx.drawImage(Orc1, 0, 0);
+    ctx.drawImage(Orc2, 64, 0);
+    ctx.drawImage(warlock, 128, 0);
+  }
+  if (number == 25) {     // Undead Warrior
+    ctx.drawImage(Undead1, 0, 0);
+    ctx.drawImage(Undead2, 64, 0);
+    ctx.drawImage(warrior, 128, 0);
+  }
+  if (number == 26) {     // Undead Rogue
+    ctx.drawImage(Undead1, 0, 0);
+    ctx.drawImage(Undead2, 64, 0);
+    ctx.drawImage(rogue, 128, 0);
+  }
+  if (number == 27) {     // Undead Priest
+    ctx.drawImage(Undead1, 0, 0);
+    ctx.drawImage(Undead2, 64, 0);
+    ctx.drawImage(priest, 128, 0);
+  }
+  if (number == 28) {     // Undead Mage
+    ctx.drawImage(Undead1, 0, 0);
+    ctx.drawImage(Undead2, 64, 0);
+    ctx.drawImage(mage, 128, 0);
+  }
+  if (number == 29) {     // Undead Warlock
+    ctx.drawImage(Undead1, 0, 0);
+    ctx.drawImage(Undead2, 64, 0);
+    ctx.drawImage(warlock, 128, 0);
+  }
+  if (number == 30) {     // Tauren Warrior
+    ctx.drawImage(Tauren1, 0, 0);
+    ctx.drawImage(Tauren2, 64, 0);
+    ctx.drawImage(warrior, 128, 0);
+  }
+  if (number == 31) {     // Tauren Hunter
+    ctx.drawImage(Tauren1, 0, 0);
+    ctx.drawImage(Tauren2, 64, 0);
+    ctx.drawImage(hunter, 128, 0);
+  }
+  if (number == 32) {     // Tauren Shamam
+    ctx.drawImage(Tauren1, 0, 0);
+    ctx.drawImage(Tauren2, 64, 0);
+    ctx.drawImage(shaman, 128, 0);
+  }
+  if (number == 33) {     // Tauren Druid
+    ctx.drawImage(Tauren1, 0, 0);
+    ctx.drawImage(Tauren2, 64, 0);
+    ctx.drawImage(druid, 128, 0);
+  }
+  if (number == 34) {     // Troll Warrior
+    ctx.drawImage(Troll1, 0, 0);
+    ctx.drawImage(Troll2, 64, 0);
+    ctx.drawImage(warrior, 128, 0);
+  }
+  if (number == 35) {     // Troll Hunter
+    ctx.drawImage(Troll1, 0, 0);
+    ctx.drawImage(Troll2, 64, 0);
+    ctx.drawImage(hunter, 128, 0);
+  }
+  if (number == 36) {     // Troll Rogue
+    ctx.drawImage(Troll1, 0, 0);
+    ctx.drawImage(Troll2, 64, 0);
+    ctx.drawImage(rogue, 128, 0);
+  }
+  if (number == 37) {     // Troll Priest
+    ctx.drawImage(Troll1, 0, 0);
+    ctx.drawImage(Troll2, 64, 0);
+    ctx.drawImage(priest, 128, 0);
+  }
+  if (number == 38) {     // Troll Shaman
+    ctx.drawImage(Troll1, 0, 0);
+    ctx.drawImage(Troll2, 64, 0);
+    ctx.drawImage(shaman, 128, 0);
+  }
+  if (number == 39) {     // Troll Mage
+    ctx.drawImage(Troll1, 0, 0);
+    ctx.drawImage(Troll2, 64, 0);
+    ctx.drawImage(mage, 128, 0);
+  }
+}
+
+function MyKeyDownHandler (MyEvent) {
+  if (MyEvent.keyCode == 32) {letsRoll ()};
+  MyEvent.preventDefault ();
+}
+
+addEventListener ("keydown", MyKeyDownHandler);
+
+// print your number
+// alert("You roll a magic die. It could have been any number between 0 and 39, but this time it was " + number);
+
+</script>
+</body>
+<h1>Press spacebar to pick a random race and class.</h1>
+</html>
