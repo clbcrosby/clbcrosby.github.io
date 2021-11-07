@@ -40,11 +40,37 @@ background8.src = "https://clbcrosby.github.io/background8.png"
 var background9 = new Image();
 background9.src = "https://clbcrosby.github.io/background9.png"
 
-var char = new Image();
-char.src = "https://clbcrosby.github.io/Human2.png"
-
 var originrock = new Image();
 originrock.src = "https://clbcrosby.github.io/Dwarf2.png";
+
+
+// Load character sprites
+
+var charup1 = new Image();
+charup1.src = "https://clbcrosby.github.io/16/charup1.png"
+
+var charup2 = new Image();
+charup2.src = "https://clbcrosby.github.io/16/charup2.png"
+
+var chardown1 = new Image();
+chardown1.src = "https://clbcrosby.github.io/16/chardown1.png"
+
+var chardown2 = new Image();
+chardown2.src = "https://clbcrosby.github.io/chardown2.png"
+
+var charright1 = new Image();
+charright1.src = "https://clbcrosby.github.io/16/charright1.png"
+
+var charright2 = new Image();
+charright2.src = "https://clbcrosby.github.io/16/charright2.png"
+
+var charleft1 = new Image();
+charleft1.src = "https://clbcrosby.github.io/16/charleft1.png"
+
+var charleft2 = new Image();
+charleft2.src = "https://clbcrosby.github.io/charleft2.png"
+
+var char = chardown1;  // The starting costume for the character
 
 // Set the starting coordinates for game sprites.
 
@@ -80,7 +106,6 @@ var d = 0;
 
 function reposition ()
   {
-
   if (w == 1 && a == 0 && s == 0 && d == 0) {chary = chary - 8}; // W pressed
   if (w == 0 && a == 1 && s == 0 && d == 0) {charx = charx - 8}; // A pressed
   if (w == 0 && a == 0 && s == 1 && d == 0) {chary = chary + 8}; // S pressed
@@ -139,6 +164,16 @@ function reposition ()
   if ((background9x - charx) > 2560) {background9x = background9x - 3840};
   }
 
+// Animates the player character
+
+function animatechar ()
+  {
+  if (w == 1 && a == 0 && s == 0 && d == 0) {char = charup1};  // W pressed
+  if (w == 0 && a == 1 && s == 0 && d == 0) {char = charleft1}; // A pressed
+  if (w == 0 && a == 0 && s == 1 && d == 0) {char = chardown1}; // S pressed
+  if (w == 0 && a == 0 && s == 0 && d == 1) {char = charright1}; // D pressed
+  }
+
 // Clears the canvas and redraws sprites at their current coordinates.
 
 function drawframe ()
@@ -167,6 +202,7 @@ function MyKeyDownHandler (MyEvent)
   if (MyEvent.keyCode == 65) {a = 1};   // A
   if (MyEvent.keyCode == 83) {s = 1};   // S
   if (MyEvent.keyCode == 68) {d = 1};   // D
+  if (MyEvent.keyCode == 87 || 65 || 83 || 68) animatechar ();
   MyEvent.preventDefault ()
   }
 
@@ -178,8 +214,8 @@ function MyKeyUpHandler (MyEvent)
   if (MyEvent.keyCode == 68) {d = 0};  // D
   }
 
-addEventListener("keydown", MyKeyDownHandler);
-addEventListener("keyup", MyKeyUpHandler);
+addEventListener ("keydown", MyKeyDownHandler);
+addEventListener ("keyup", MyKeyUpHandler);
 
 // Set the rates for drawing new frames.
 
