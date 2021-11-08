@@ -166,9 +166,8 @@ function reposition ()
 
 // Animates the player character
 
-function animatechar ()
-  {
-  if (w == 1 && a == 0 && s == 0 && d == 0) {char = charup1};  // W pressed
+function animatechar () {
+  if (w == 1 && a == 0 && s == 0 && d == 0) {char = charup1}; // W pressed
   if (w == 0 && a == 1 && s == 0 && d == 0) {char = charleft1}; // A pressed
   if (w == 0 && a == 0 && s == 1 && d == 0) {char = chardown1}; // S pressed
   if (w == 0 && a == 0 && s == 0 && d == 1) {char = charright1}; // D pressed
@@ -189,7 +188,8 @@ function drawframe ()
   ctx.drawImage(background8, background8x - charx, background8y - chary);
   ctx.drawImage(background9, background9x - charx, background9y - chary);
   ctx.drawImage(originrock, originrockx - charx, originrocky - chary);        // non-player sprite
-  ctx.drawImage(char, (Canvas.width / 2) - 32, (Canvas.height / 2) - 32);     // player character sprite
+  animatechar ();                                                             // choose player character sprite costume
+  ctx.drawImage(char, (Canvas.width / 2) - 32, (Canvas.height / 2) - 32);     // draw player character sprite
   ctx.fillText("X: " + (charx / 4) + " Y: " + (chary / 4), 10, 32);           // UI element
   reposition ();                                                              // The above function that changes sprite coords
   }
@@ -202,7 +202,6 @@ function MyKeyDownHandler (MyEvent)
   if (MyEvent.keyCode == 65) {a = 1};   // A
   if (MyEvent.keyCode == 83) {s = 1};   // S
   if (MyEvent.keyCode == 68) {d = 1};   // D
-  if (MyEvent.keyCode == 87 || 65 || 83 || 68) animatechar ();
   MyEvent.preventDefault ()
   }
 
