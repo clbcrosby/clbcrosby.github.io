@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<HTML>
+<head>
+<title>Party Pup</title>
+</head>
+<body>
+<canvas id=Canvas width=1280 height=720 style="background-color: lightblue">
+</canvas>
+<script>
+var ctx = Canvas.getContext("2d");
+
+// Game code starts here.
+
+// Load background and sprites.
+
+var background = new Image();
+background.src = "https://clbcrosby.github.io/PartyPup/background.png"
+
+var pup1 = new Image();
+pup1.src = "https://clbcrosby.github.io/PartyPup/pup1.png"
+
+var pup2 = new Image();
+pup2.src = "https://clbcrosby.github.io/PartyPup/pup2.png"
+
+var pupsprite = pup1;
+var pupx = 300;
+var pupy = 630;
+
+// Clears the canvas and redraws sprites at their current coordinates.
+
+function drawframe () {
+  ctx.clearRect(0, 0, Canvas.width, Canvas.height);
+  ctx.drawImage(background, 0, 0);
+  ctx.drawImage(pupsprite, pupx, pupy);
+}
+
+var pup
+
+</script>
+</body>
+</html>
