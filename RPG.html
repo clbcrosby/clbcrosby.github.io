@@ -56,7 +56,7 @@ var chardown1 = new Image();
 chardown1.src = "https://clbcrosby.github.io/16/chardown1.png"
 
 var chardown2 = new Image();
-chardown2.src = "https://clbcrosby.github.io/chardown2.png"
+chardown2.src = "https://clbcrosby.github.io/16/chardown2.png"
 
 var charright1 = new Image();
 charright1.src = "https://clbcrosby.github.io/16/charright1.png"
@@ -68,7 +68,7 @@ var charleft1 = new Image();
 charleft1.src = "https://clbcrosby.github.io/16/charleft1.png"
 
 var charleft2 = new Image();
-charleft2.src = "https://clbcrosby.github.io/charleft2.png"
+charleft2.src = "https://clbcrosby.github.io/16/charleft2.png"
 
 var char = chardown1;  // The starting costume for the character
 
@@ -164,13 +164,33 @@ function reposition ()
   if ((background9x - charx) > 2560) {background9x = background9x - 3840};
   }
 
+// Sets the player character costume
+
+var ccm = 0;
+
+function costumezero () {
+  ccm = 0;
+}
+
+function costumeone () {
+  ccm = 1;
+  setTimeout(costumezero, 200);
+}
+
+setInterval(costumeone, 400);
+
 // Animates the player character
 
 function animatechar () {
-  if (w == 1 && a == 0 && s == 0 && d == 0) {char = charup1}; // W pressed
-  if (w == 0 && a == 1 && s == 0 && d == 0) {char = charleft1}; // A pressed
-  if (w == 0 && a == 0 && s == 1 && d == 0) {char = chardown1}; // S pressed
-  if (w == 0 && a == 0 && s == 0 && d == 1) {char = charright1}; // D pressed
+  if (w == 1 && a == 0 && s == 0 && d == 0 && ccm == 0) {char = charup1}; // W pressed
+  if (w == 0 && a == 1 && s == 0 && d == 0 && ccm == 0) {char = charleft1}; // A pressed
+  if (w == 0 && a == 0 && s == 1 && d == 0 && ccm == 0) {char = chardown1}; // S pressed
+  if (w == 0 && a == 0 && s == 0 && d == 1 && ccm == 0) {char = charright1}; // D pressed
+
+  if (w == 1 && a == 0 && s == 0 && d == 0 && ccm == 1) {char = charup2}; // W pressed
+  if (w == 0 && a == 1 && s == 0 && d == 0 && ccm == 1) {char = charleft2}; // A pressed
+  if (w == 0 && a == 0 && s == 1 && d == 0 && ccm == 1) {char = chardown2}; // S pressed
+  if (w == 0 && a == 0 && s == 0 && d == 1 && ccm == 1) {char = charright2}; // D pressed
   }
 
 // Clears the canvas and redraws sprites at their current coordinates.
