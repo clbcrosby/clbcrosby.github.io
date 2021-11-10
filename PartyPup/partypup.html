@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <HTML>
 <head>
@@ -16,8 +17,8 @@ var ctx = Canvas.getContext("2d");
 var background = new Image();
 background.src = "https://clbcrosby.github.io/PartyPup/background.png"
 
-var short = new Image();
-short.src = "https://clbcrosby.github.io/PartyPup/short.png"
+var fence = new Image();
+fence.src = "https://clbcrosby.github.io/PartyPup/short.png"
 
 var pup1 = new Image();
 pup1.src = "https://clbcrosby.github.io/PartyPup/pup1.png"
@@ -29,7 +30,8 @@ var pupsprite = pup1;
 var pupx = 300;
 var pupy = 630;
 
-var post1x = 1200;
+var fencex = 630;
+var fencey = 1200;
 
 // Jumping Spaghetti
 
@@ -234,20 +236,13 @@ function jump1 () {
     setTimeout(jump2, 15);
 }
 
-// Generates obstacles
-
-function post1 () {
-    var post1x = post1x - 10;
-    ctx.drawImage(short, post1x, 640);
-}
-
 // Clears the canvas and redraws sprites at their current coordinates.
 
 function drawframe () {
   ctx.clearRect(0, 0, Canvas.width, Canvas.height);
   ctx.drawImage(background, 0, 0);
   ctx.drawImage(pupsprite, pupx, pupy);
-  post1();
+  ctx.drawImage(fence, post1x, post1y);
 }
 
 setInterval (drawframe, 15);
