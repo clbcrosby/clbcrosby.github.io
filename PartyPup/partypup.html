@@ -26,6 +26,209 @@ var pupsprite = pup1;
 var pupx = 300;
 var pupy = 630;
 
+// Jumping Spaghetti
+
+function jump40 () {
+  pupy = pupy + 25;
+}
+
+function jump39 () {
+  pupy = pupy + 25;
+  setTimeout (jump40, 15);
+}
+
+function jump38 () {
+  pupy = pupy + 23;
+  setTimeout (jump39, 15);
+}
+
+function jump37 () {
+  pupy = pupy + 22;
+  setTimeout (jump38, 15);
+}
+
+function jump36 () {
+  pupy = pupy + 20;
+  setTimeout (jump37, 15);
+}
+
+function jump35 () {
+  pupy = pupy + 20;
+  setTimeout (jump36, 15);
+}
+
+function jump34 () {
+  pupy = pupy + 18;
+  setTimeout (jump35, 15);
+}
+
+function jump33 () {
+  pupy = pupy + 17;
+  setTimeout (jump34, 15);
+}
+
+function jump32 () {
+  pupy = pupy + 15;
+  setTimeout (jump33, 15);
+}
+
+function jump31 () {
+  pupy = pupy + 15;
+  setTimeout (jump32, 15);
+}
+
+function jump30 () {
+  pupy = pupy + 13;
+  setTimeout (jump31, 15);
+}
+
+function jump29 () {
+  pupy = pupy + 12;
+  setTimeout (jump30, 15);
+}
+
+function jump28 () {
+  pupy = pupy + 10;
+  setTimeout (jump29, 15);
+}
+
+function jump27 () {
+  pupy = pupy + 10;
+  setTimeout (jump28, 15);
+}
+
+function jump26 () {
+  pupy = pupy + 8;
+  setTimeout (jump27, 15);
+}
+
+function jump25 () {
+  pupy = pupy + 7;
+  setTimeout (jump26, 15);
+}
+
+function jump24 () {
+  pupy = pupy + 5;
+  setTimeout (jump25, 15);
+}
+
+function jump23 () {
+  pupy = pupy + 5;
+  setTimeout (jump24, 15);
+}
+
+function jump22 () {
+  pupy = pupy + 3;
+  setTimeout (jump23, 15);
+}
+
+function jump21 () {
+  pupy = pupy + 2;
+  setTimeout (jump22, 15);
+}
+
+function jump20 () {
+  pupy = pupy - 2;
+  setTimeout (jump21, 15);
+}
+
+function jump19 () {
+  pupy = pupy - 3;
+  setTimeout (jump20, 15);
+}
+
+function jump18 () {
+  pupy = pupy - 5;
+  setTimeout (jump19, 15);
+}
+
+function jump17 () {
+  pupy = pupy - 5;
+  setTimeout (jump18, 15);
+}
+
+function jump16 () {
+  pupy = pupy - 7;
+  setTimeout (jump17, 15);
+}
+
+function jump15 () {
+  pupy = pupy - 8;
+  setTimeout (jump16, 15);
+}
+
+function jump14 () {
+  pupy = pupy - 10;
+  setTimeout (jump15, 15);
+}
+
+function jump13 () {
+  pupy = pupy - 10;
+  setTimeout (jump14, 15);
+}
+
+function jump12 () {
+  pupy = pupy - 12;
+  setTimeout (jump13, 15);
+}
+
+function jump11 () {
+  pupy = pupy - 13;
+  setTimeout (jump12, 15);
+}
+
+function jump10 () {
+  pupy = pupy - 15;
+  setTimeout (jump11, 15);
+}
+
+function jump9 () {
+  pupy = pupy - 15;
+  setTimeout (jump10, 15);
+}
+
+function jump8 () {
+  pupy = pupy - 17;
+  setTimeout (jump9, 15);
+}
+
+function jump7 () {
+  pupy = pupy - 18;
+  setTimeout (jump8, 15);
+}
+
+function jump6 () {
+  pupy = pupy - 20;
+  setTimeout (jump7, 15);
+}
+
+function jump5 () {
+  pupy = pupy - 20;
+  setTimeout (jump6, 15);
+}
+
+function jump4 () {
+    var go = false;
+    pupy = pupy - 22;
+    setTimeout(jump5, 15);
+}
+
+function jump3 () {
+    var go = false;
+    pupy = pupy - 23;
+    setTimeout(jump4, 15);
+}
+
+function jump2 () {
+    pupy = pupy - 25;
+    setTimeout(jump3, 15);
+}
+
+function jump1 () {
+    pupy = pupy - 25;
+    setTimeout(jump2, 15);
+}
+
 // Clears the canvas and redraws sprites at their current coordinates.
 
 function drawframe () {
@@ -34,7 +237,15 @@ function drawframe () {
   ctx.drawImage(pupsprite, pupx, pupy);
 }
 
-var pup
+setInterval (drawframe, 15);
+
+function MyKeyDownHandler (MyEvent)
+  {
+  if (MyEvent.keyCode == 87) {jump1 ()}
+  MyEvent.preventDefault ();
+}
+
+addEventListener ("keydown", MyKeyDownHandler);
 
 </script>
 </body>
