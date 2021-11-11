@@ -17,18 +17,14 @@ var ctx = Canvas.getContext("2d");
 var background = new Image();
 background.src = "https://clbcrosby.github.io/PartyPup/background.png"
 
-var pup1 = new Image();
-pup1.src = "https://clbcrosby.github.io/PartyPup/pup1.png"
+var pup = new Image();
+pup.src = "https://clbcrosby.github.io/PartyPup/pup.png"
 
-var pup2 = new Image();
-pup2.src = "https://clbcrosby.github.io/PartyPup/pup2.png"
+var pupx = 300;
+var pupy = 630;
 
 var fence = new Image();
 fence.src = "https://clbcrosby.github.io/PartyPup/fence.png"
-
-var pupsprite = pup1;
-var pupx = 300;
-var pupy = 630;
 
 var fencex = 1200;
 var fencey = 530;
@@ -239,7 +235,7 @@ function jump1 () {
 function drawframe () {
   ctx.clearRect(0, 0, Canvas.width, Canvas.height);
   ctx.drawImage(background, 0, 0);
-  ctx.drawImage(pupsprite, pupx, pupy);
+  ctx.drawImage(pup, pupx, pupy);
 
   fencex = fencex - 5;
   if (fencex < 0) {
