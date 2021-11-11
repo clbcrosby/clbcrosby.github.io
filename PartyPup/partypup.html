@@ -17,21 +17,21 @@ var ctx = Canvas.getContext("2d");
 var background = new Image();
 background.src = "https://clbcrosby.github.io/PartyPup/background.png"
 
-var fence = new Image();
-fence.src = "https://clbcrosby.github.io/PartyPup/short.png"
-
 var pup1 = new Image();
 pup1.src = "https://clbcrosby.github.io/PartyPup/pup1.png"
 
 var pup2 = new Image();
 pup2.src = "https://clbcrosby.github.io/PartyPup/pup2.png"
 
+var fence = new Image();
+fence.src = "https://clbcrosby.github.io/PartyPup/short.png"
+
 var pupsprite = pup1;
 var pupx = 300;
 var pupy = 630;
 
-var fencex = 630;
-var fencey = 1200;
+var fencex = 1200;
+var fencey = 580;
 
 // Jumping Spaghetti
 
@@ -215,13 +215,11 @@ function jump5 () {
 }
 
 function jump4 () {
-    var go = false;
     pupy = pupy - 22;
     setTimeout(jump5, 15);
 }
 
 function jump3 () {
-    var go = false;
     pupy = pupy - 23;
     setTimeout(jump4, 15);
 }
@@ -242,7 +240,12 @@ function drawframe () {
   ctx.clearRect(0, 0, Canvas.width, Canvas.height);
   ctx.drawImage(background, 0, 0);
   ctx.drawImage(pupsprite, pupx, pupy);
-  ctx.drawImage(fence, post1x, post1y);
+
+  fencex = fencex - 5;
+  if (fencex < 0) {
+    fencex = 1300;
+  }
+  ctx.drawImage(fence, fencex, fencey);
 }
 
 setInterval (drawframe, 15);
