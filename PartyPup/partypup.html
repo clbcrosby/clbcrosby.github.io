@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <HTML>
 <head>
@@ -232,16 +233,24 @@ function jump1 () {
 
 // Clears the canvas and redraws sprites at their current coordinates.
 
+function fence1 () {
+
+
+  fencex = fencex - 5;
+  if (fencex < -462) {
+    fencex = 1300;
+  }
+  ctx.drawImage(fence, fencex, fencey);
+  ctx.drawImage(fence, (fencex + 430), fencey);
+
+}
+
 function drawframe () {
   ctx.clearRect(0, 0, Canvas.width, Canvas.height);
   ctx.drawImage(background, 0, 0);
   ctx.drawImage(pup, pupx, pupy);
 
-  fencex = fencex - 5;
-  if (fencex < 0) {
-    fencex = 1300;
-  }
-  ctx.drawImage(fence, fencex, fencey);
+  fence1 ();
 }
 
 setInterval (drawframe, 15);
