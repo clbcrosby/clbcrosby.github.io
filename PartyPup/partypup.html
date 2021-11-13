@@ -299,13 +299,24 @@ function drawframe () {
 
 setInterval (drawframe, 15);
 
-function MyKeyDownHandler (MyEvent)
-  {
-  if (MyEvent.keyCode == 32 && pupy == 630) {jump1 ()}
-  MyEvent.preventDefault ();
+function resetgame () {
+  gameover = 0;
+  fencex = 1200;
+  fencey = 530;
+  round = 0;
+  treat = 0;
+  pupy = 630;
 }
 
-addEventListener ("keydown", MyKeyDownHandler);
+function getplayerinput(MyEvent) {
+  if (pupy == 630 && gameover == 0) {jump1 ()}
+  if (gameover > 0) {resetgame ()}
+  MyEvent.preventDefault();
+}
+
+addEventListener("touchstart", getplayerinput);     
+addEventListener("mousedown", getplayerinput);     
+addEventListener("keydown", getplayerinput);     
 
 </script>
 </body>
