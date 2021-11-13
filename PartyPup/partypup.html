@@ -245,13 +245,16 @@ function ImagesTouching(img2, x2, y2) {
 // Clears the canvas and redraws sprites at their current coordinates.
 
 function drawfence() {
+
   fencex = (fencex - 5);
   if (fencex < -1280) {
     fencex = 1280;
     round = (round + 1);
   }
+
+
   if (round <= 1) {
-  ctx.fillText(round, fencex, (fencey - 70));
+  ctx.fillText(round, fencex, (fencey - 170));
   ctx.drawImage(fence, fencex, fencey);
     if (ImagesTouching(fence, fencex, fencey)) {
       gameover = (gameover + 1);
@@ -261,8 +264,10 @@ function drawfence() {
       gameover = (gameover + 1);
     }
   }
+
+
   if (round >= 2) {
-  ctx.fillText(round, fencex, (fencey - 70));
+  ctx.fillText(round, fencex, (fencey - 170));
   ctx.drawImage(fence, fencex, fencey);
     if (ImagesTouching(fence, fencex, fencey)) {
       gameover = (gameover + 1);
@@ -276,14 +281,20 @@ function drawfence() {
       gameover = (gameover + 1);
     }
   }
+
+
 }
 
 function drawframe () {
-  ctx.clearRect(0, 0, Canvas.width, Canvas.height);
-  ctx.drawImage(background, 0, 0);
-  ctx.drawImage(pup, pupx, pupy);
-  drawfence();
-  ctx.fillText(gameover, 100, 100);
+  if (gameover == 0) {
+    ctx.clearRect(0, 0, Canvas.width, Canvas.height);
+    ctx.drawImage(background, 0, 0);
+    ctx.drawImage(pup, pupx, pupy);
+    drawfence();
+  }
+  if (gameover > 0) {
+    ctx.fillText("Gameover", 100, 100);
+  }
 }
 
 setInterval (drawframe, 15);
