@@ -234,6 +234,14 @@ function jump1 () {
     setTimeout(jump2, 15);
 }
 
+// Checks for collision
+
+function ImagesTouching(img2, x2, y2) {
+         if (pupx >= x2+img2.width || pupx+pup.width <= x2) return false;   // too far to the side
+         if (pupy >= y2+img2.height || pupy+pup.height <= y2) return false; // too far above/below
+         return true;                                                    // otherwise, overlap   
+         }
+
 // Clears the canvas and redraws sprites at their current coordinates.
 
 function drawfence() {
@@ -245,13 +253,28 @@ function drawfence() {
   if (round <= 1) {
   ctx.fillText(round, fencex, (fencey - 70));
   ctx.drawImage(fence, fencex, fencey);
+    if (ImagesTouching(fence, fencex, fencey)) {
+      gameover = (gameover + 1);
+    }
   ctx.drawImage(fence, (fencex + 630), fencey);
+    if (ImagesTouching(fence, (fencex + 630), fencey)) {
+      gameover = (gameover + 1);
+    }
   }
   if (round >= 2) {
   ctx.fillText(round, fencex, (fencey - 70));
   ctx.drawImage(fence, fencex, fencey);
+    if (ImagesTouching(fence, fencex, fencey)) {
+      gameover = (gameover + 1);
+    }
   ctx.drawImage(fence, (fencex + 430), fencey);
+    if (ImagesTouching(fence, (fencex + 430), fencey)) {
+      gameover = (gameover + 1);
+    }
   ctx.drawImage(fence, (fencex + 860), fencey);
+    if (ImagesTouching(fence, (fencex + 830), fencey)) {
+      gameover = (gameover + 1);
+    }
   }
 }
 
