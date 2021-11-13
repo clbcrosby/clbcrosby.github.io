@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <HTML>
 <head>
@@ -10,6 +8,7 @@
 </canvas>
 <script>
 var ctx = Canvas.getContext("2d");
+ctx.font="60px Arial";
 
 // Game code starts here.
 
@@ -29,6 +28,8 @@ fence.src = "https://clbcrosby.github.io/PartyPup/fence.png"
 
 var fencex = 1200;
 var fencey = 530;
+
+var round = 0;
 
 // Jumping Spaghetti
 
@@ -233,24 +234,29 @@ function jump1 () {
 
 // Clears the canvas and redraws sprites at their current coordinates.
 
-function fence1 () {
-
-
-  fencex = fencex - 5;
-  if (fencex < -462) {
-    fencex = 1300;
+function drawfence() {
+  fencex = (fencex - 5);
+  if (fencex < -1280) {
+    fencex = 1280;
+    round = (round + 1);
   }
+  if (round <= 1) {
   ctx.drawImage(fence, fencex, fencey);
   ctx.drawImage(fence, (fencex + 430), fencey);
-
+  }
+  if (round >= 2) {
+  ctx.drawImage(fence, fencex, fencey);
+  ctx.drawImage(fence, (fencex + 430), fencey);
+  ctx.drawImage(fence, (fencex + 860), fencey);
+  }
 }
 
 function drawframe () {
   ctx.clearRect(0, 0, Canvas.width, Canvas.height);
   ctx.drawImage(background, 0, 0);
   ctx.drawImage(pup, pupx, pupy);
-
-  fence1 ();
+  drawfence();
+  ctx.fillText(round, 100, 100);
 }
 
 setInterval (drawframe, 15);
