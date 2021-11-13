@@ -30,6 +30,8 @@ var fencex = 1200;
 var fencey = 530;
 
 var round = 0;
+var treat = 0;
+var gameover = 0;
 
 // Jumping Spaghetti
 
@@ -241,10 +243,12 @@ function drawfence() {
     round = (round + 1);
   }
   if (round <= 1) {
+  ctx.fillText(round, fencex, (fencey - 70));
   ctx.drawImage(fence, fencex, fencey);
-  ctx.drawImage(fence, (fencex + 430), fencey);
+  ctx.drawImage(fence, (fencex + 630), fencey);
   }
   if (round >= 2) {
+  ctx.fillText(round, fencex, (fencey - 70));
   ctx.drawImage(fence, fencex, fencey);
   ctx.drawImage(fence, (fencex + 430), fencey);
   ctx.drawImage(fence, (fencex + 860), fencey);
@@ -256,7 +260,7 @@ function drawframe () {
   ctx.drawImage(background, 0, 0);
   ctx.drawImage(pup, pupx, pupy);
   drawfence();
-  ctx.fillText(round, 100, 100);
+  ctx.fillText(gameover, 100, 100);
 }
 
 setInterval (drawframe, 15);
