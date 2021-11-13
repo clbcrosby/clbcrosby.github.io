@@ -254,7 +254,7 @@ function drawfence() {
 
 
   if (round <= 1) {
-  ctx.fillText(round, fencex, (fencey - 170));
+  ctx.fillText((round + 1), fencex, 200);
   ctx.drawImage(fence, fencex, fencey);
     if (ImagesTouching(fence, fencex, fencey)) {
       gameover = (gameover + 1);
@@ -267,7 +267,7 @@ function drawfence() {
 
 
   if (round >= 2) {
-  ctx.fillText(round, fencex, 300);
+  ctx.fillText((round + 1), fencex, 200);
   ctx.drawImage(fence, fencex, fencey);
     if (ImagesTouching(fence, fencex, fencey)) {
       gameover = (gameover + 1);
@@ -291,9 +291,10 @@ function drawframe () {
     ctx.drawImage(background, 0, 0);
     ctx.drawImage(pup, pupx, pupy);
     drawfence();
+    ctx.fillText("Score: " + (round + treat), 100, 100);
   }
   if (gameover > 0) {
-    ctx.fillText("Gameover", 100, 100);
+    ctx.fillText("Game Over", Canvas.width/2, Canvas.height/2);
   }
 }
 
