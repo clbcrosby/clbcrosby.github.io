@@ -36,7 +36,7 @@ var gameover = 0;
 // Jumping Spaghetti
 
 function jump40 () {
-  pupy = pupy + 25;
+  pupy = 630;
 }
 
 function jump39 () {
@@ -267,7 +267,7 @@ function drawfence() {
 
 
   if (round >= 2) {
-  ctx.fillText(round, fencex, (fencey - 170));
+  ctx.fillText(round, fencex, 300);
   ctx.drawImage(fence, fencex, fencey);
     if (ImagesTouching(fence, fencex, fencey)) {
       gameover = (gameover + 1);
@@ -277,7 +277,7 @@ function drawfence() {
       gameover = (gameover + 1);
     }
   ctx.drawImage(fence, (fencex + 860), fencey);
-    if (ImagesTouching(fence, (fencex + 830), fencey)) {
+    if (ImagesTouching(fence, (fencex + 860), fencey)) {
       gameover = (gameover + 1);
     }
   }
