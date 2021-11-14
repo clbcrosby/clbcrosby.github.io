@@ -141,22 +141,22 @@ function jump23 () {
 }
 
 function jump22 () {
-  pupy = pupy + 3;
+  pupy = pupy + 2;
   setTimeout (jump23, delay);
 }
 
 function jump21 () {
   pupy = pupy + 2;
-  setTimeout (jump22, delay);
+  setTimeout (jump22, (delay*2));
 }
 
 function jump20 () {
   pupy = pupy - 2;
-  setTimeout (jump21, delay);
+  setTimeout (jump21, (delay*2));
 }
 
 function jump19 () {
-  pupy = pupy - 3;
+  pupy = pupy - 2;
   setTimeout (jump20, delay);
 }
 
@@ -261,7 +261,7 @@ function ImagesTouching(img2, x2, y2) {
 // Clears the canvas and redraws sprites at their current coordinates.
 
 function drawfence() {
-  fencex = (fencex - 5);
+  fencex = (fencex - 4);
   if (fencex < -1280) {
     fencex = 1280;
     round = (round + 1);
@@ -516,7 +516,7 @@ function drawfence() {
       if (ImagesTouching(fence, (fencex + 1280), (fencey + 40))) {
         gameover = (gameover + 1);
       }
-    ctx.drawImage(treat, (fencex + 1264), treatyd);
+    ctx.drawImage(treat, (fencex + 1264), treatye);
       if (ImagesTouching(treat, (fencex + 1264), treatye)) {
         score = (score + 100);
         treatye = -100;
@@ -545,9 +545,8 @@ setInterval (drawframe, delay);
 function resetgame () {
   gameover = 0;
   fencex = 1200;
-  round = 0;
-  score = 0;
-//  pupy = 630;
+//  round = 0;
+//  score = 0;
   treatye = (fencey + 10);
 }
 
