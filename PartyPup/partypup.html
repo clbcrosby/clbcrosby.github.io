@@ -142,7 +142,7 @@ function jump23 () {
 
 function jump22 () {
   pupy = pupy + 2;
-  setTimeout (jump23, delay);
+  setTimeout (jump23, (delay*2));
 }
 
 function jump21 () {
@@ -157,7 +157,7 @@ function jump20 () {
 
 function jump19 () {
   pupy = pupy - 2;
-  setTimeout (jump20, delay);
+  setTimeout (jump20, (delay*2));
 }
 
 function jump18 () {
@@ -258,14 +258,15 @@ function ImagesTouching(img2, x2, y2) {
          return true;                                                       // otherwise, overlap   
          }
 
-// Clears the canvas and redraws sprites at their current coordinates.
+// Makes fences.
 
 function drawfence() {
   fencex = (fencex - 4);
   if (fencex < -1280) {
     fencex = 1280;
     round = (round + 1);
-    score = (score + round);
+    if (round > 10 && delay > 15) {delay = (delay - 1)}
+    if (round > 10) {round = 2}
     treatya = (fencey + 10);
     treatyb = (fencey + 10);
     treatyc = (fencey + 10);
@@ -284,7 +285,7 @@ function drawfence() {
       }
     ctx.drawImage(treat, (fencex + 1280), treatye);
       if (ImagesTouching(treat, (fencex + 1280), treatye)) {
-        score = (score + 100);
+        score = (score + 500);
         treatye = -100;
       }
   }
@@ -308,7 +309,7 @@ function drawfence() {
       }
     ctx.drawImage(treat, (fencex + 1280), treatye);
       if (ImagesTouching(treat, (fencex + 1280), treatye)) {
-        score = (score + 100);
+        score = (score + 500);
         treatye = -100;
       }
   }
@@ -332,7 +333,7 @@ function drawfence() {
       }
     ctx.drawImage(treat, (fencex + 1280), treatye);
       if (ImagesTouching(treat, (fencex + 1280), treatye)) {
-        score = (score + 100);
+        score = (score + 500);
         treatye = -100;
       }
   }
@@ -356,7 +357,7 @@ function drawfence() {
       }
     ctx.drawImage(treat, (fencex + 1280), treatye);
       if (ImagesTouching(treat, (fencex + 1280), treatye)) {
-        score = (score + 100);
+        score = (score + 500);
         treatye = -100;
       }
   }
@@ -374,10 +375,9 @@ function drawfence() {
       if (ImagesTouching(fence, (fencex + 640), (fencey + 40))) {
         gameover = (gameover + 1);
       }
-
     ctx.drawImage(treat, (fencex + 624), treatyc);
       if (ImagesTouching(treat, (fencex + 624), treatyc)) {
-        score = (score + 100);
+        score = (score + 500);
         treatyc = -100;
       }
     ctx.drawImage(fence, (fencex + 960), fencey);
@@ -387,7 +387,7 @@ function drawfence() {
 
     ctx.drawImage(treat, (fencex + 1280), treatye);
       if (ImagesTouching(treat, (fencex + 1280), treatye)) {
-        score = (score + 100);
+        score = (score + 500);
         treatye = -100;
       }
   }
@@ -401,8 +401,6 @@ function drawfence() {
       if (ImagesTouching(fence, (fencex + 320), fencey)) {
         gameover = (gameover + 1);
       }
-
-// short double
     ctx.drawImage(fence, (fencex + 624), (fencey + 50));
       if (ImagesTouching(floater, (fencex + 624), (fencey + 50))) {
         gameover = (gameover + 1);
@@ -411,19 +409,16 @@ function drawfence() {
       if (ImagesTouching(floater, (fencex + 656), (fencey + 50))) {
         gameover = (gameover + 1);
       }
-//
-
     ctx.drawImage(fence, (fencex + 960), fencey);
       if (ImagesTouching(fence, (fencex + 960), fencey)) {
         gameover = (gameover + 1);
       }
     ctx.drawImage(treat, (fencex + 1280), treatye);
       if (ImagesTouching(treat, (fencex + 1280), treatye)) {
-        score = (score + 100);
+        score = (score + 500);
         treatye = -100;
       }
   }
-
   if (round == 8) {
     ctx.fillText((round + 1), fencex, 200);
     ctx.drawImage(floater, fencex, (fencey - 150));
@@ -444,7 +439,7 @@ function drawfence() {
       }
     ctx.drawImage(treat, (fencex + 1280), treatye);
       if (ImagesTouching(treat, (fencex + 1280), treatye)) {
-        score = (score + 100);
+        score = (score + 500);
         treatye = -100;
       }
   }
@@ -469,7 +464,7 @@ function drawfence() {
       }
     ctx.drawImage(treat, (fencex + 1280), treatye);
       if (ImagesTouching(treat, (fencex + 1280), treatye)) {
-        score = (score + 100);
+        score = (score + 500);
         treatye = -100;
       }
   }
@@ -482,7 +477,7 @@ function drawfence() {
       }
     ctx.drawImage(treat, (fencex - 16), treatya);
       if (ImagesTouching(treat, (fencex - 16), treatya)) {
-        score = (score + 100);
+        score = (score + 500);
         treatya = -100;
       }
     ctx.drawImage(fence, (fencex + 320), (fencey + 40));
@@ -491,7 +486,7 @@ function drawfence() {
       }
     ctx.drawImage(treat, (fencex + 304), treatyb);
       if (ImagesTouching(treat, (fencex + 304), treatyb)) {
-        score = (score + 100);
+        score = (score + 500);
         treatyb = -100;
       }
     ctx.drawImage(fence, (fencex + 640), (fencey + 40));
@@ -500,7 +495,7 @@ function drawfence() {
       }
     ctx.drawImage(treat, (fencex + 624), treatyc);
       if (ImagesTouching(treat, (fencex + 624), treatyc)) {
-        score = (score + 100);
+        score = (score + 500);
         treatyc = -100;
       }
     ctx.drawImage(fence, (fencex + 960), (fencey + 40));
@@ -509,7 +504,7 @@ function drawfence() {
       }
     ctx.drawImage(treat, (fencex + 944), treatyd);
       if (ImagesTouching(treat, (fencex + 944), treatyd)) {
-        score = (score + 100);
+        score = (score + 500);
         treatyd = -100;
       }
     ctx.drawImage(fence, (fencex + 1280), (fencey + 40));
@@ -518,12 +513,13 @@ function drawfence() {
       }
     ctx.drawImage(treat, (fencex + 1264), treatye);
       if (ImagesTouching(treat, (fencex + 1264), treatye)) {
-        score = (score + 100);
+        score = (score + 500);
         treatye = -100;
       }
   }
-
 }
+
+// Clears the canvas and redraws sprites at their current coordinates.
 
 function drawframe () {
   if (gameover == 0) {
@@ -531,6 +527,7 @@ function drawframe () {
     ctx.drawImage(background, 0, 0);
     ctx.drawImage(pup, pupx, pupy);
     drawfence();
+    score = (score + 1);
     ctx.fillText("Score: " + score, 10, 60);
     ctx.fillText("High Score: " + highscore, 10, 30);
   }
@@ -545,8 +542,9 @@ setInterval (drawframe, delay);
 function resetgame () {
   gameover = 0;
   fencex = 1200;
-//  round = 0;
-//  score = 0;
+  delay = 25;
+  round = 0;
+  score = 0;
   treatye = (fencey + 10);
 }
 
