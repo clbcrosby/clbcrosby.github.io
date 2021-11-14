@@ -247,7 +247,7 @@ function jump1 () {
 function ImagesTouching(img2, x2, y2) {
          if (pupx >= x2+img2.width || pupx+pup.width <= x2) return false;   // too far to the side
          if (pupy >= y2+img2.height || pupy+pup.height <= y2) return false; // too far above/below
-         return true;                                                    // otherwise, overlap   
+         return true;                                                       // otherwise, overlap   
          }
 
 // Clears the canvas and redraws sprites at their current coordinates.
@@ -295,7 +295,7 @@ function drawfence() {
     }
   }
 
-  if (round == 2) {
+  if (round >= 2 && round <= 4) {
     ctx.fillText((round + 1), fencex, 200);
     ctx.drawImage(fence, fencex, fencey);
       if (ImagesTouching(fence, fencex, fencey)) {
@@ -320,7 +320,7 @@ function drawfence() {
       }
   }
 
-  if (round >= 3) {
+  if (round == 5) {
     ctx.fillText((round + 1), fencex, 200);
     ctx.drawImage(fence, fencex, fencey);
       if (ImagesTouching(fence, fencex, fencey)) {
@@ -330,8 +330,8 @@ function drawfence() {
       if (ImagesTouching(fence, (fencex + 320), fencey)) {
         gameover = (gameover + 1);
       }
-    ctx.drawImage(floater, (fencex + 640), (fencey - 200));
-      if (ImagesTouching(fence, (fencex + 640), fencey)) {
+    ctx.drawImage(floater, (fencex + 640), (fencey - 150));
+      if (ImagesTouching(floater, (fencex + 640), (fencey - 150))) {
         gameover = (gameover + 1);
       }
     ctx.drawImage(fence, (fencex + 960), fencey);
@@ -344,6 +344,37 @@ function drawfence() {
         treaty = -100;
       }
   }
+
+  if (round >= 6) {
+    ctx.fillText((round + 1), fencex, 200);
+    ctx.drawImage(fence, fencex, fencey);
+      if (ImagesTouching(fence, fencex, fencey)) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(fence, (fencex + 320), fencey);
+      if (ImagesTouching(fence, (fencex + 320), fencey)) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(fence, (fencex + 640), (fencey - 30));
+      if (ImagesTouching(fence, (fencex + 640), fencey)) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(treat, (fencex + 640), fencey);
+      if (ImagesTouching(treat, (fencex + 1280), treaty)) {
+        treats = (treats + 1);
+        treaty = -100;
+      }
+    ctx.drawImage(fence, (fencex + 960), fencey);
+      if (ImagesTouching(fence, (fencex + 960), fencey)) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(treat, (fencex + 1280), treaty);
+      if (ImagesTouching(treat, (fencex + 1280), treaty)) {
+        treats = (treats + 1);
+        treaty = -100;
+      }
+  }
+
 }
 
 function drawframe () {
