@@ -7,8 +7,11 @@
 <canvas id=Canvas width=1280 height=720 style="background-color: lightblue">
 </canvas>
 <script>
+
 var ctx = Canvas.getContext("2d");
 ctx.font="24px Arial";
+
+var delay = 25;
 
 // Game code starts here.
 
@@ -54,197 +57,197 @@ function jump40 () {
 
 function jump39 () {
   pupy = pupy + 25;
-  setTimeout (jump40, 15);
+  setTimeout (jump40, delay);
 }
 
 function jump38 () {
   pupy = pupy + 23;
-  setTimeout (jump39, 15);
+  setTimeout (jump39, delay);
 }
 
 function jump37 () {
   pupy = pupy + 22;
-  setTimeout (jump38, 15);
+  setTimeout (jump38, delay);
 }
 
 function jump36 () {
   pupy = pupy + 20;
-  setTimeout (jump37, 15);
+  setTimeout (jump37, delay);
 }
 
 function jump35 () {
   pupy = pupy + 20;
-  setTimeout (jump36, 15);
+  setTimeout (jump36, delay);
 }
 
 function jump34 () {
   pupy = pupy + 18;
-  setTimeout (jump35, 15);
+  setTimeout (jump35, delay);
 }
 
 function jump33 () {
   pupy = pupy + 17;
-  setTimeout (jump34, 15);
+  setTimeout (jump34, delay);
 }
 
 function jump32 () {
   pupy = pupy + 15;
-  setTimeout (jump33, 15);
+  setTimeout (jump33, delay);
 }
 
 function jump31 () {
   pupy = pupy + 15;
-  setTimeout (jump32, 15);
+  setTimeout (jump32, delay);
 }
 
 function jump30 () {
   pupy = pupy + 13;
-  setTimeout (jump31, 15);
+  setTimeout (jump31, delay);
 }
 
 function jump29 () {
   pupy = pupy + 12;
-  setTimeout (jump30, 15);
+  setTimeout (jump30, delay);
 }
 
 function jump28 () {
   pupy = pupy + 10;
-  setTimeout (jump29, 15);
+  setTimeout (jump29, delay);
 }
 
 function jump27 () {
   pupy = pupy + 10;
-  setTimeout (jump28, 15);
+  setTimeout (jump28, delay);
 }
 
 function jump26 () {
   pupy = pupy + 8;
-  setTimeout (jump27, 15);
+  setTimeout (jump27, delay);
 }
 
 function jump25 () {
   pupy = pupy + 7;
-  setTimeout (jump26, 15);
+  setTimeout (jump26, delay);
 }
 
 function jump24 () {
   pupy = pupy + 5;
-  setTimeout (jump25, 15);
+  setTimeout (jump25, delay);
 }
 
 function jump23 () {
   pupy = pupy + 5;
-  setTimeout (jump24, 15);
+  setTimeout (jump24, delay);
 }
 
 function jump22 () {
   pupy = pupy + 3;
-  setTimeout (jump23, 15);
+  setTimeout (jump23, delay);
 }
 
 function jump21 () {
   pupy = pupy + 2;
-  setTimeout (jump22, 15);
+  setTimeout (jump22, delay);
 }
 
 function jump20 () {
   pupy = pupy - 2;
-  setTimeout (jump21, 15);
+  setTimeout (jump21, delay);
 }
 
 function jump19 () {
   pupy = pupy - 3;
-  setTimeout (jump20, 15);
+  setTimeout (jump20, delay);
 }
 
 function jump18 () {
   pupy = pupy - 5;
-  setTimeout (jump19, 15);
+  setTimeout (jump19, delay);
 }
 
 function jump17 () {
   pupy = pupy - 5;
-  setTimeout (jump18, 15);
+  setTimeout (jump18, delay);
 }
 
 function jump16 () {
   pupy = pupy - 7;
-  setTimeout (jump17, 15);
+  setTimeout (jump17, delay);
 }
 
 function jump15 () {
   pupy = pupy - 8;
-  setTimeout (jump16, 15);
+  setTimeout (jump16, delay);
 }
 
 function jump14 () {
   pupy = pupy - 10;
-  setTimeout (jump15, 15);
+  setTimeout (jump15, delay);
 }
 
 function jump13 () {
   pupy = pupy - 10;
-  setTimeout (jump14, 15);
+  setTimeout (jump14, delay);
 }
 
 function jump12 () {
   pupy = pupy - 12;
-  setTimeout (jump13, 15);
+  setTimeout (jump13, delay);
 }
 
 function jump11 () {
   pupy = pupy - 13;
-  setTimeout (jump12, 15);
+  setTimeout (jump12, delay);
 }
 
 function jump10 () {
   pupy = pupy - 15;
-  setTimeout (jump11, 15);
+  setTimeout (jump11, delay);
 }
 
 function jump9 () {
   pupy = pupy - 15;
-  setTimeout (jump10, 15);
+  setTimeout (jump10, delay);
 }
 
 function jump8 () {
   pupy = pupy - 17;
-  setTimeout (jump9, 15);
+  setTimeout (jump9, delay);
 }
 
 function jump7 () {
   pupy = pupy - 18;
-  setTimeout (jump8, 15);
+  setTimeout (jump8, delay);
 }
 
 function jump6 () {
   pupy = pupy - 20;
-  setTimeout (jump7, 15);
+  setTimeout (jump7, delay);
 }
 
 function jump5 () {
   pupy = pupy - 20;
-  setTimeout (jump6, 15);
+  setTimeout (jump6, delay);
 }
 
 function jump4 () {
     pupy = pupy - 22;
-    setTimeout(jump5, 15);
+    setTimeout(jump5, delay);
 }
 
 function jump3 () {
     pupy = pupy - 23;
-    setTimeout(jump4, 15);
+    setTimeout(jump4, delay);
 }
 
 function jump2 () {
     pupy = pupy - 25;
-    setTimeout(jump3, 15);
+    setTimeout(jump3, delay);
 }
 
 function jump1 () {
     pupy = pupy - 25;
-    setTimeout(jump2, 15);
+    setTimeout(jump2, delay);
 }
 
 // Checks for collision
@@ -263,20 +266,20 @@ function drawfence() {
     fencex = 1280;
     round = (round + 1);
     score = (score + round);
-    treatya = fencey;
-    treatyb = fencey;
-    treatyc = fencey;
-    treatyd = fencey;
-    treatye = fencey;
+    treatya = (fencey + 10);
+    treatyb = (fencey + 10);
+    treatyc = (fencey + 10);
+    treatyd = (fencey + 10);
+    treatye = (fencey + 10);
   }
   if (round == 0) {
     ctx.fillText((round + 1), fencex, 200);
-    ctx.drawImage(fence, fencex, (fencey + 30));
-      if (ImagesTouching(fence, fencex, (fencey + 30))) {
+    ctx.drawImage(fence, fencex, (fencey + 50));
+      if (ImagesTouching(fence, fencex, (fencey + 50))) {
         gameover = (gameover + 1);
       }
-    ctx.drawImage(fence, (fencex + 640), (fencey + 30));
-      if (ImagesTouching(fence, (fencex + 630), (fencey + 30))) {
+    ctx.drawImage(fence, (fencex + 640), (fencey + 50));
+      if (ImagesTouching(fence, (fencex + 630), (fencey + 50))) {
         gameover = (gameover + 1);
       }
     ctx.drawImage(treat, (fencex + 1280), treatye);
@@ -287,12 +290,20 @@ function drawfence() {
   }
   if (round == 1) {
     ctx.fillText((round + 1), fencex, 200);
-    ctx.drawImage(fence, fencex, fencey);
-      if (ImagesTouching(fence, fencex, fencey)) {
+    ctx.drawImage(fence, fencex, (fencey + 50));
+      if (ImagesTouching(fence, fencex, (fencey + 50))) {
         gameover = (gameover + 1);
       }
-    ctx.drawImage(fence, (fencex + 640), fencey);
-      if (ImagesTouching(fence, (fencex + 630), fencey)) {
+    ctx.drawImage(fence, (fencex + 320), (fencey + 25));
+      if (ImagesTouching(fence, (fencex + 320), (fencey + 25))) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(fence, (fencex + 640), (fencey + 10));
+      if (ImagesTouching(fence, (fencex + 640), (fencey + 10))) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(fence, (fencex + 960), fencey);
+      if (ImagesTouching(fence, (fencex + 960), fencey)) {
         gameover = (gameover + 1);
       }
     ctx.drawImage(treat, (fencex + 1280), treatye);
@@ -300,7 +311,7 @@ function drawfence() {
         score = (score + 100);
         treatye = -100;
       }
-    }
+  }
   if (round >= 2 && round <= 4) {
     ctx.fillText((round + 1), fencex, 200);
     ctx.drawImage(fence, fencex, fencey);
@@ -325,7 +336,6 @@ function drawfence() {
         treatye = -100;
       }
   }
-
   if (round == 5) {
     ctx.fillText((round + 1), fencex, 200);
     ctx.drawImage(fence, fencex, fencey);
@@ -336,12 +346,10 @@ function drawfence() {
       if (ImagesTouching(fence, (fencex + 320), fencey)) {
         gameover = (gameover + 1);
       }
-// Floater
     ctx.drawImage(floater, (fencex + 640), (fencey - 150));
       if (ImagesTouching(floater, (fencex + 640), (fencey - 150))) {
         gameover = (gameover + 1);
       }
-//
     ctx.drawImage(fence, (fencex + 960), fencey);
       if (ImagesTouching(fence, (fencex + 960), fencey)) {
         gameover = (gameover + 1);
@@ -352,24 +360,18 @@ function drawfence() {
         treatye = -100;
       }
   }
-
   if (round == 6) {
-
     ctx.fillText((round + 1), fencex, 200);
     ctx.drawImage(fence, fencex, fencey);
       if (ImagesTouching(fence, fencex, fencey)) {
         gameover = (gameover + 1);
       }
-
     ctx.drawImage(fence, (fencex + 320), fencey);
       if (ImagesTouching(fence, (fencex + 320), fencey)) {
         gameover = (gameover + 1);
       }
-
-// short fence + treat
-
     ctx.drawImage(fence, (fencex + 640), (fencey + 40));
-      if (ImagesTouching(fence, (fencex + 640), fencey)) {
+      if (ImagesTouching(fence, (fencex + 640), (fencey + 40))) {
         gameover = (gameover + 1);
       }
 
@@ -378,8 +380,6 @@ function drawfence() {
         score = (score + 100);
         treatyc = -100;
       }
-//
-
     ctx.drawImage(fence, (fencex + 960), fencey);
       if (ImagesTouching(fence, (fencex + 960), fencey)) {
         gameover = (gameover + 1);
@@ -391,9 +391,7 @@ function drawfence() {
         treatye = -100;
       }
   }
-
-
-  if (round >= 7) {
+  if (round == 7) {
     ctx.fillText((round + 1), fencex, 200);
     ctx.drawImage(fence, fencex, fencey);
       if (ImagesTouching(fence, fencex, fencey)) {
@@ -426,6 +424,104 @@ function drawfence() {
       }
   }
 
+  if (round == 8) {
+    ctx.fillText((round + 1), fencex, 200);
+    ctx.drawImage(floater, fencex, (fencey - 150));
+      if (ImagesTouching(floater, fencex, (fencey - 150))) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(fence, (fencex + 320), fencey);
+      if (ImagesTouching(fence, (fencex + 320), fencey)) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(floater, (fencex + 640), (fencey - 150));
+      if (ImagesTouching(floater, (fencex + 640), (fencey - 150))) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(fence, (fencex + 960), fencey);
+      if (ImagesTouching(fence, (fencex + 960), fencey)) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(treat, (fencex + 1280), treatye);
+      if (ImagesTouching(treat, (fencex + 1280), treatye)) {
+        score = (score + 100);
+        treatye = -100;
+      }
+  }
+
+  if (round == 9) {
+    ctx.fillText((round + 1), fencex, 200);
+    ctx.drawImage(fence, fencex, fencey);
+      if (ImagesTouching(fence, fencex, fencey)) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(floater, (fencex + 320), (fencey - 150));
+      if (ImagesTouching(floater, (fencex + 320), (fencey - 150))) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(fence, (fencex + 640), fencey);
+      if (ImagesTouching(fence, (fencex + 640), fencey)) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(floater, (fencex + 960), (fencey - 150));
+      if (ImagesTouching(floater, (fencex + 960), (fencey - 150))) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(treat, (fencex + 1280), treatye);
+      if (ImagesTouching(treat, (fencex + 1280), treatye)) {
+        score = (score + 100);
+        treatye = -100;
+      }
+  }
+
+  if (round == 10) {
+    ctx.fillText((round + 1), fencex, 200);
+    ctx.drawImage(fence, fencex, (fencey + 40));
+      if (ImagesTouching(fence, fencex, (fencey + 40))) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(treat, (fencex - 16), treatya);
+      if (ImagesTouching(treat, (fencex - 16), treatya)) {
+        score = (score + 100);
+        treatya = -100;
+      }
+    ctx.drawImage(fence, (fencex + 320), (fencey + 40));
+      if (ImagesTouching(fence, (fencex + 320), (fencey + 40))) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(treat, (fencex + 304), treatyb);
+      if (ImagesTouching(treat, (fencex + 304), treatyb)) {
+        score = (score + 100);
+        treatyb = -100;
+      }
+    ctx.drawImage(fence, (fencex + 640), (fencey + 40));
+      if (ImagesTouching(fence, (fencex + 640), (fencey + 40))) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(treat, (fencex + 624), treatyc);
+      if (ImagesTouching(treat, (fencex + 624), treatyc)) {
+        score = (score + 100);
+        treatyc = -100;
+      }
+    ctx.drawImage(fence, (fencex + 960), (fencey + 40));
+      if (ImagesTouching(fence, (fencex + 960), (fencey + 40))) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(treat, (fencex + 944), treatyd);
+      if (ImagesTouching(treat, (fencex + 944), treatyd)) {
+        score = (score + 100);
+        treatyd = -100;
+      }
+    ctx.drawImage(fence, (fencex + 1280), (fencey + 40));
+      if (ImagesTouching(fence, (fencex + 1280), (fencey + 40))) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(treat, (fencex + 1264), treatyd);
+      if (ImagesTouching(treat, (fencex + 1264), treatye)) {
+        score = (score + 100);
+        treatye = -100;
+      }
+  }
 
 }
 
@@ -444,19 +540,15 @@ function drawframe () {
   }
 }
 
-setInterval (drawframe, 15);
+setInterval (drawframe, delay);
 
 function resetgame () {
   gameover = 0;
   fencex = 1200;
   round = 0;
   score = 0;
-  pupy = 630;
-  treatya = fencey;
-  treatyb = fencey;
-  treatyc = fencey;
-  treatyd = fencey;
-  treatye = fencey;
+//  pupy = 630;
+  treatye = (fencey + 10);
 }
 
 function getplayerinput(MyEvent) {
