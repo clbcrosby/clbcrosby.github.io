@@ -27,11 +27,17 @@ var fence = new Image();
 fence.src = "https://clbcrosby.github.io/PartyPup/fence.png"
 
 var fencex = 1200;
-var fencey = 530;
+var fencey = 520;
+
+var treat = new Image();
+treat.src = "https://clbcrosby.github.io/PartyPup/treat.png"
 
 var round = 0;
-var treat = 0;
 var gameover = 0;
+
+var treats = 0;
+var treaty = 520;
+
 
 // Jumping Spaghetti
 
@@ -250,39 +256,68 @@ function drawfence() {
   if (fencex < -1280) {
     fencex = 1280;
     round = (round + 1);
+    treaty = 520;
   }
 
+  if (round == 0) {
+    ctx.fillText((round + 1), fencex, 200);
+    ctx.drawImage(fence, fencex, (fencey + 10));
+      if (ImagesTouching(fence, fencex, (fencey + 10))) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(fence, (fencex + 640), (fencey + 10));
+      if (ImagesTouching(fence, (fencex + 630), (fencey + 10))) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(treat, (fencex + 1280), treaty);
+      if (ImagesTouching(treat, (fencex + 1280), treaty)) {
+        treats = (treats + 1);
+        treaty = -100;
+      }
+  }
 
-  if (round <= 1) {
+  if (round == 1) {
   ctx.fillText((round + 1), fencex, 200);
   ctx.drawImage(fence, fencex, fencey);
     if (ImagesTouching(fence, fencex, fencey)) {
       gameover = (gameover + 1);
     }
-  ctx.drawImage(fence, (fencex + 630), fencey);
+  ctx.drawImage(fence, (fencex + 640), fencey);
     if (ImagesTouching(fence, (fencex + 630), fencey)) {
       gameover = (gameover + 1);
     }
+  ctx.drawImage(treat, (fencex + 1280), treaty);
+    if (ImagesTouching(treat, (fencex + 1280), treaty)) {
+      treats = (treats + 1);
+      treaty = -100;
+    }
   }
-
 
   if (round >= 2) {
-  ctx.fillText((round + 1), fencex, 200);
-  ctx.drawImage(fence, fencex, fencey);
-    if (ImagesTouching(fence, fencex, fencey)) {
-      gameover = (gameover + 1);
-    }
-  ctx.drawImage(fence, (fencex + 430), fencey);
-    if (ImagesTouching(fence, (fencex + 430), fencey)) {
-      gameover = (gameover + 1);
-    }
-  ctx.drawImage(fence, (fencex + 860), fencey);
-    if (ImagesTouching(fence, (fencex + 860), fencey)) {
-      gameover = (gameover + 1);
-    }
+    ctx.fillText((round + 1), fencex, 200);
+    ctx.drawImage(fence, fencex, fencey);
+      if (ImagesTouching(fence, fencex, fencey)) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(fence, (fencex + 320), fencey);
+      if (ImagesTouching(fence, (fencex + 320), fencey)) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(fence, (fencex + 640), fencey);
+      if (ImagesTouching(fence, (fencex + 640), fencey)) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(fence, (fencex + 960), fencey);
+      if (ImagesTouching(fence, (fencex + 960), fencey)) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(treat, (fencex + 1280), treaty);
+      if (ImagesTouching(treat, (fencex + 1280), treaty)) {
+        treats = (treats + 1);
+        treaty = -100;
+      }
+
   }
-
-
 }
 
 function drawframe () {
@@ -291,7 +326,7 @@ function drawframe () {
     ctx.drawImage(background, 0, 0);
     ctx.drawImage(pup, pupx, pupy);
     drawfence();
-    ctx.fillText("Score: " + (round + treat), 100, 100);
+    ctx.fillText("Score: " + (round + treats), 100, 100);
   }
   if (gameover > 0) {
     ctx.fillText("Game Over", Canvas.width/2, Canvas.height/2);
@@ -305,7 +340,7 @@ function resetgame () {
   fencex = 1200;
   fencey = 530;
   round = 0;
-  treat = 0;
+  treats = 0;
   pupy = 630;
 }
 
