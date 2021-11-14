@@ -27,7 +27,7 @@ var fence = new Image();
 fence.src = "https://clbcrosby.github.io/PartyPup/fence.png"
 
 var fencex = 1200;
-var fencey = 520;
+var fencey = 500;
 
 var treat = new Image();
 treat.src = "https://clbcrosby.github.io/PartyPup/treat.png"
@@ -36,7 +36,7 @@ var round = 0;
 var gameover = 0;
 
 var treats = 0;
-var treaty = 520;
+var treaty = 500;
 
 
 // Jumping Spaghetti
@@ -256,17 +256,17 @@ function drawfence() {
   if (fencex < -1280) {
     fencex = 1280;
     round = (round + 1);
-    treaty = 520;
+    treaty = 500;
   }
 
   if (round == 0) {
     ctx.fillText((round + 1), fencex, 200);
-    ctx.drawImage(fence, fencex, (fencey + 10));
-      if (ImagesTouching(fence, fencex, (fencey + 10))) {
+    ctx.drawImage(fence, fencex, (fencey + 30));
+      if (ImagesTouching(fence, fencex, (fencey + 30))) {
         gameover = (gameover + 1);
       }
-    ctx.drawImage(fence, (fencex + 640), (fencey + 10));
-      if (ImagesTouching(fence, (fencex + 630), (fencey + 10))) {
+    ctx.drawImage(fence, (fencex + 640), (fencey + 30));
+      if (ImagesTouching(fence, (fencex + 630), (fencey + 30))) {
         gameover = (gameover + 1);
       }
     ctx.drawImage(treat, (fencex + 1280), treaty);
@@ -338,7 +338,6 @@ setInterval (drawframe, 15);
 function resetgame () {
   gameover = 0;
   fencex = 1200;
-  fencey = 530;
   round = 0;
   treats = 0;
   pupy = 630;
