@@ -26,18 +26,20 @@ var pupy = 630;
 var fence = new Image();
 fence.src = "https://clbcrosby.github.io/PartyPup/fence.png"
 
+var floater = new Image();
+floater.src = "https://clbcrosby.github.io/PartyPup/floater.png"
+
 var fencex = 1200;
 var fencey = 500;
 
 var treat = new Image();
 treat.src = "https://clbcrosby.github.io/PartyPup/treat.png"
 
-var round = 0;
-var gameover = 0;
-
 var treats = 0;
 var treaty = 500;
 
+var round = 0;
+var gameover = 0;
 
 // Jumping Spaghetti
 
@@ -293,7 +295,7 @@ function drawfence() {
     }
   }
 
-  if (round >= 2) {
+  if (round == 2) {
     ctx.fillText((round + 1), fencex, 200);
     ctx.drawImage(fence, fencex, fencey);
       if (ImagesTouching(fence, fencex, fencey)) {
@@ -316,7 +318,31 @@ function drawfence() {
         treats = (treats + 1);
         treaty = -100;
       }
+  }
 
+  if (round >= 3) {
+    ctx.fillText((round + 1), fencex, 200);
+    ctx.drawImage(fence, fencex, fencey);
+      if (ImagesTouching(fence, fencex, fencey)) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(fence, (fencex + 320), fencey);
+      if (ImagesTouching(fence, (fencex + 320), fencey)) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(floater, (fencex + 640), (fencey - 200));
+      if (ImagesTouching(fence, (fencex + 640), fencey)) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(fence, (fencex + 960), fencey);
+      if (ImagesTouching(fence, (fencex + 960), fencey)) {
+        gameover = (gameover + 1);
+      }
+    ctx.drawImage(treat, (fencex + 1280), treaty);
+      if (ImagesTouching(treat, (fencex + 1280), treaty)) {
+        treats = (treats + 1);
+        treaty = -100;
+      }
   }
 }
 
