@@ -11,7 +11,7 @@
 var ctx = Canvas.getContext("2d");
 ctx.font="24px Arial";
 
-var delay = 20;
+var delay = 15;
 
 // Game code starts here.
 
@@ -157,7 +157,7 @@ function jump20 () {
 
 function jump19 () {
   pupy = pupy - 2;
-  setTimeout (jump20, (delay*2));
+  setTimeout (jump20, delay);
 }
 
 function jump18 () {
@@ -265,7 +265,6 @@ function drawfence() {
   if (fencex < -1280) {
     fencex = 1280;
     round = (round + 1);
-    if (round > 10 && delay > 15) {delay = (delay - 1)}
     if (round > 10) {round = 2}
     treatya = (fencey + 10);
     treatyb = (fencey + 10);
@@ -533,7 +532,6 @@ setInterval (drawframe, delay);
 function resetgame () {
   gameover = 0;
   fencex = 1200;
-  delay = 25;
   round = 0;
   score = 0;
   treatye = (fencey + 10);
