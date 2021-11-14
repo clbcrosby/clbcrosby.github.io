@@ -11,7 +11,7 @@
 var ctx = Canvas.getContext("2d");
 ctx.font="24px Arial";
 
-var delay = 25;
+var delay = 20;
 
 // Game code starts here.
 
@@ -274,7 +274,6 @@ function drawfence() {
     treatye = (fencey + 10);
   }
   if (round == 0) {
-    ctx.fillText((round + 1), fencex, 200);
     ctx.drawImage(fence, fencex, (fencey + 50));
       if (ImagesTouching(fence, fencex, (fencey + 50))) {
         gameover = (gameover + 1);
@@ -290,7 +289,6 @@ function drawfence() {
       }
   }
   if (round == 1) {
-    ctx.fillText((round + 1), fencex, 200);
     ctx.drawImage(fence, fencex, (fencey + 50));
       if (ImagesTouching(fence, fencex, (fencey + 50))) {
         gameover = (gameover + 1);
@@ -314,7 +312,6 @@ function drawfence() {
       }
   }
   if (round >= 2 && round <= 4) {
-    ctx.fillText((round + 1), fencex, 200);
     ctx.drawImage(fence, fencex, fencey);
       if (ImagesTouching(fence, fencex, fencey)) {
         gameover = (gameover + 1);
@@ -338,7 +335,6 @@ function drawfence() {
       }
   }
   if (round == 5) {
-    ctx.fillText((round + 1), fencex, 200);
     ctx.drawImage(fence, fencex, fencey);
       if (ImagesTouching(fence, fencex, fencey)) {
         gameover = (gameover + 1);
@@ -362,7 +358,6 @@ function drawfence() {
       }
   }
   if (round == 6) {
-    ctx.fillText((round + 1), fencex, 200);
     ctx.drawImage(fence, fencex, fencey);
       if (ImagesTouching(fence, fencex, fencey)) {
         gameover = (gameover + 1);
@@ -392,7 +387,6 @@ function drawfence() {
       }
   }
   if (round == 7) {
-    ctx.fillText((round + 1), fencex, 200);
     ctx.drawImage(fence, fencex, fencey);
       if (ImagesTouching(fence, fencex, fencey)) {
         gameover = (gameover + 1);
@@ -420,7 +414,6 @@ function drawfence() {
       }
   }
   if (round == 8) {
-    ctx.fillText((round + 1), fencex, 200);
     ctx.drawImage(floater, fencex, (fencey - 150));
       if (ImagesTouching(floater, fencex, (fencey - 150))) {
         gameover = (gameover + 1);
@@ -445,7 +438,6 @@ function drawfence() {
   }
 
   if (round == 9) {
-    ctx.fillText((round + 1), fencex, 200);
     ctx.drawImage(fence, fencex, fencey);
       if (ImagesTouching(fence, fencex, fencey)) {
         gameover = (gameover + 1);
@@ -470,7 +462,6 @@ function drawfence() {
   }
 
   if (round == 10) {
-    ctx.fillText((round + 1), fencex, 200);
     ctx.drawImage(fence, fencex, (fencey + 40));
       if (ImagesTouching(fence, fencex, (fencey + 40))) {
         gameover = (gameover + 1);
