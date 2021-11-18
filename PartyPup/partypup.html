@@ -23,6 +23,9 @@ background.src = "https://clbcrosby.github.io/PartyPup/background.png"
 var pup = new Image();
 pup.src = "https://clbcrosby.github.io/PartyPup/pup.png"
 
+var rewardpup = new Image();
+rewardpup.src = "https://clbcrosby.github.io/PartyPup/rewardpup.png"
+
 var pupx = 300;
 var pupy = 630;
 
@@ -34,15 +37,10 @@ floater.src = "https://clbcrosby.github.io/PartyPup/floater.png"
 
 var fencex = 1200;
 var fencey = 500;
+var treaty = fencey + 10;
 
 var treat = new Image();
 treat.src = "https://clbcrosby.github.io/PartyPup/treat.png"
-
-var treatya = fencey;
-var treatyb = fencey;
-var treatyc = fencey;
-var treatyd = fencey;
-var treatye = fencey;
 
 var round = 0;
 var score = 0;
@@ -260,253 +258,80 @@ function ImagesTouching(img2, x2, y2) {
 
 // Makes fences.
 
+function regularfence (n, m) {
+  ctx.drawImage(fence, (fencex + n), (fencey + m));
+    if (ImagesTouching(fence, (fencex + n), (fencey + m))) {
+      gameover = (gameover + 1);
+    }
+}
+
+function floatfence (n, m) {
+  ctx.drawImage(floater, (fencex + n), (fencey - 150 + m));
+    if (ImagesTouching(floater, (fencex + n), (fencey - 150 + m))) {
+      gameover = (gameover + 1);
+    }
+}
+
+function addtreat () {
+  ctx.drawImage(treat, (fencex + 1280), treaty);
+    if (ImagesTouching(treat, (fencex + 1280), treaty)) {
+      score = (score + 500);
+      treaty = -100;
+    }
+  ctx.fillText("Yum! +500!", (fencex + 1280), (treaty + 690));
+  ctx.drawImage(rewardpup, (fencex + 1280), (treaty + 720));
+}
+
+// function goldtreat () {
+//
+// }
+
 function drawfence() {
   fencex = (fencex - 4);
   if (fencex < -1280) {
     fencex = 1280;
     round = (round + 1);
-    if (round > 10) {round = 2}
-    treatya = (fencey + 10);
-    treatyb = (fencey + 10);
-    treatyc = (fencey + 10);
-    treatyd = (fencey + 10);
-    treatye = (fencey + 10);
+    if (round > 6) {round = 2}  // Delete this later and replace with randomly generated fences.
+    treaty = (fencey + 10);
   }
   if (round == 0) {
-    ctx.drawImage(fence, fencex, (fencey + 50));
-      if (ImagesTouching(fence, fencex, (fencey + 50))) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(fence, (fencex + 640), (fencey + 50));
-      if (ImagesTouching(fence, (fencex + 630), (fencey + 50))) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(treat, (fencex + 1280), treatye);
-      if (ImagesTouching(treat, (fencex + 1280), treatye)) {
-        score = (score + 500);
-        treatye = -100;
-      }
+    ctx.fillText("Tap the screen to jump.", (fencex - 320), Canvas.height/2);
+    ctx.fillText("Get treats for bonus points!", (fencex + 960), Canvas.height/2);
+    regularfence (0, 50);
+    regularfence (640, 50);
+    addtreat ();
   }
   if (round == 1) {
-    ctx.drawImage(fence, fencex, (fencey + 50));
-      if (ImagesTouching(fence, fencex, (fencey + 50))) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(fence, (fencex + 320), (fencey + 25));
-      if (ImagesTouching(fence, (fencex + 320), (fencey + 25))) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(fence, (fencex + 640), (fencey + 10));
-      if (ImagesTouching(fence, (fencex + 640), (fencey + 10))) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(fence, (fencex + 960), fencey);
-      if (ImagesTouching(fence, (fencex + 960), fencey)) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(treat, (fencex + 1280), treatye);
-      if (ImagesTouching(treat, (fencex + 1280), treatye)) {
-        score = (score + 500);
-        treatye = -100;
-      }
+    regularfence (0, 50);
+    regularfence (320, 25);
+    regularfence (640, 10);
+    regularfence (960, 0);
+    addtreat ();
   }
   if (round >= 2 && round <= 4) {
-    ctx.drawImage(fence, fencex, fencey);
-      if (ImagesTouching(fence, fencex, fencey)) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(fence, (fencex + 320), fencey);
-      if (ImagesTouching(fence, (fencex + 320), fencey)) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(fence, (fencex + 640), fencey);
-      if (ImagesTouching(fence, (fencex + 640), fencey)) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(fence, (fencex + 960), fencey);
-      if (ImagesTouching(fence, (fencex + 960), fencey)) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(treat, (fencex + 1280), treatye);
-      if (ImagesTouching(treat, (fencex + 1280), treatye)) {
-        score = (score + 500);
-        treatye = -100;
-      }
+    regularfence (0, 0);
+    regularfence (320, 0);
+    regularfence (640, 0);
+    regularfence (960, 0);
+    addtreat ();
   }
   if (round == 5) {
-    ctx.drawImage(fence, fencex, fencey);
-      if (ImagesTouching(fence, fencex, fencey)) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(fence, (fencex + 320), fencey);
-      if (ImagesTouching(fence, (fencex + 320), fencey)) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(floater, (fencex + 640), (fencey - 150));
-      if (ImagesTouching(floater, (fencex + 640), (fencey - 150))) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(fence, (fencex + 960), fencey);
-      if (ImagesTouching(fence, (fencex + 960), fencey)) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(treat, (fencex + 1280), treatye);
-      if (ImagesTouching(treat, (fencex + 1280), treatye)) {
-        score = (score + 500);
-        treatye = -100;
-      }
+    floatfence (0, 0);
+    regularfence (320, 0);
+    floatfence (640, 0);
+    regularfence (960, 0);
+    addtreat ();
   }
   if (round == 6) {
-    ctx.drawImage(fence, fencex, fencey);
-      if (ImagesTouching(fence, fencex, fencey)) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(fence, (fencex + 320), fencey);
-      if (ImagesTouching(fence, (fencex + 320), fencey)) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(fence, (fencex + 640), (fencey + 40));
-      if (ImagesTouching(fence, (fencex + 640), (fencey + 40))) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(treat, (fencex + 624), treatyc);
-      if (ImagesTouching(treat, (fencex + 624), treatyc)) {
-        score = (score + 500);
-        treatyc = -100;
-      }
-    ctx.drawImage(fence, (fencex + 960), fencey);
-      if (ImagesTouching(fence, (fencex + 960), fencey)) {
-        gameover = (gameover + 1);
-      }
-
-    ctx.drawImage(treat, (fencex + 1280), treatye);
-      if (ImagesTouching(treat, (fencex + 1280), treatye)) {
-        score = (score + 500);
-        treatye = -100;
-      }
+    regularfence (0, 0);
+    floatfence (320, 0);
+    regularfence (640, 0);
+    floatfence (960, 0);
+    addtreat ();
   }
-  if (round == 7) {
-    ctx.drawImage(fence, fencex, fencey);
-      if (ImagesTouching(fence, fencex, fencey)) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(fence, (fencex + 320), fencey);
-      if (ImagesTouching(fence, (fencex + 320), fencey)) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(fence, (fencex + 624), (fencey + 50));
-      if (ImagesTouching(floater, (fencex + 624), (fencey + 50))) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(floater, (fencex + 656), (fencey + 50));
-      if (ImagesTouching(floater, (fencex + 656), (fencey + 50))) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(fence, (fencex + 960), fencey);
-      if (ImagesTouching(fence, (fencex + 960), fencey)) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(treat, (fencex + 1280), treatye);
-      if (ImagesTouching(treat, (fencex + 1280), treatye)) {
-        score = (score + 500);
-        treatye = -100;
-      }
-  }
-  if (round == 8) {
-    ctx.drawImage(floater, fencex, (fencey - 150));
-      if (ImagesTouching(floater, fencex, (fencey - 150))) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(fence, (fencex + 320), fencey);
-      if (ImagesTouching(fence, (fencex + 320), fencey)) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(floater, (fencex + 640), (fencey - 150));
-      if (ImagesTouching(floater, (fencex + 640), (fencey - 150))) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(fence, (fencex + 960), fencey);
-      if (ImagesTouching(fence, (fencex + 960), fencey)) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(treat, (fencex + 1280), treatye);
-      if (ImagesTouching(treat, (fencex + 1280), treatye)) {
-        score = (score + 500);
-        treatye = -100;
-      }
-  }
-
-  if (round == 9) {
-    ctx.drawImage(fence, fencex, fencey);
-      if (ImagesTouching(fence, fencex, fencey)) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(floater, (fencex + 320), (fencey - 150));
-      if (ImagesTouching(floater, (fencex + 320), (fencey - 150))) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(fence, (fencex + 640), fencey);
-      if (ImagesTouching(fence, (fencex + 640), fencey)) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(floater, (fencex + 960), (fencey - 150));
-      if (ImagesTouching(floater, (fencex + 960), (fencey - 150))) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(treat, (fencex + 1280), treatye);
-      if (ImagesTouching(treat, (fencex + 1280), treatye)) {
-        score = (score + 500);
-        treatye = -100;
-      }
-  }
-
-  if (round == 10) {
-    ctx.drawImage(fence, fencex, (fencey + 40));
-      if (ImagesTouching(fence, fencex, (fencey + 40))) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(treat, (fencex - 16), treatya);
-      if (ImagesTouching(treat, (fencex - 16), treatya)) {
-        score = (score + 500);
-        treatya = -100;
-      }
-    ctx.drawImage(fence, (fencex + 320), (fencey + 40));
-      if (ImagesTouching(fence, (fencex + 320), (fencey + 40))) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(treat, (fencex + 304), treatyb);
-      if (ImagesTouching(treat, (fencex + 304), treatyb)) {
-        score = (score + 500);
-        treatyb = -100;
-      }
-    ctx.drawImage(fence, (fencex + 640), (fencey + 40));
-      if (ImagesTouching(fence, (fencex + 640), (fencey + 40))) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(treat, (fencex + 624), treatyc);
-      if (ImagesTouching(treat, (fencex + 624), treatyc)) {
-        score = (score + 500);
-        treatyc = -100;
-      }
-    ctx.drawImage(fence, (fencex + 960), (fencey + 40));
-      if (ImagesTouching(fence, (fencex + 960), (fencey + 40))) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(treat, (fencex + 944), treatyd);
-      if (ImagesTouching(treat, (fencex + 944), treatyd)) {
-        score = (score + 500);
-        treatyd = -100;
-      }
-    ctx.drawImage(fence, (fencex + 1280), (fencey + 40));
-      if (ImagesTouching(fence, (fencex + 1280), (fencey + 40))) {
-        gameover = (gameover + 1);
-      }
-    ctx.drawImage(treat, (fencex + 1264), treatye);
-      if (ImagesTouching(treat, (fencex + 1264), treatye)) {
-        score = (score + 500);
-        treatye = -100;
-      }
-  }
+//  if (round > 6) {
+//
+//  }
 }
 
 // Clears the canvas and redraws sprites at their current coordinates.
@@ -523,6 +348,7 @@ function drawframe () {
   }
   if (gameover > 0) {
     ctx.fillText("Game Over", Canvas.width/2, Canvas.height/2);
+    ctx.fillText("Tap to play again.", Canvas.width/2, ((Canvas.height/2) + 30));
       if (score > highscore) {highscore = score}
   }
 }
@@ -534,7 +360,7 @@ function resetgame () {
   fencex = 1200;
   round = 0;
   score = 0;
-  treatye = (fencey + 10);
+  treaty = (fencey + 10);
 }
 
 function getplayerinput(MyEvent) {
