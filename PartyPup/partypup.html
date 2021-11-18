@@ -47,7 +47,13 @@ var score = 0;
 var highscore = 0;
 var gameover = 0;
 
-// Jumping Spaghetti
+var a = 0;
+var b = 0;
+var c = 0;
+var d = 0;
+var e = 0;
+
+// I don't know how to make the pup jump.
 
 function jump40 () {
   pupy = 630;
@@ -282,16 +288,23 @@ function addtreat () {
   ctx.drawImage(rewardpup, (fencex + 1380), (treaty + 410));
 }
 
-// function goldtreat () {
-//
-// }
+function RandInt(max) { 
+   n = Math.floor(Math.random() * max);  
+   return(n);  
+} 
 
 function drawfence() {
   fencex = (fencex - 4);
   if (fencex < -1280) {
     fencex = 1280;
     round = (round + 1);
-    if (round > 6) {round = 2}  // Delete this later and replace with randomly generated fences.
+    if (round > 6) {
+      a = RandInt(3);
+      b = RandInt(3);
+      c = RandInt(3);
+      d = RandInt(3);
+      e = RandInt(2);
+    }
     treaty = (fencey + 10);
   }
   if (round == 0) {
@@ -329,9 +342,18 @@ function drawfence() {
     floatfence (960, 0);
     addtreat ();
   }
-//  if (round > 6) {
-//
-//  }
+  if (round > 6) {
+    if (a < 2) {regularfence (0, 0)}
+    if (a == 2) {floatfence (0, 0)}
+    if (b < 2) {regularfence (320, 0)}
+    if (b == 2) {floatfence (320, 0)}
+    if (c < 2) {regularfence (640, 0)}
+    if (c == 2) {floatfence (640, 0)}
+    if (d < 2) {regularfence (960, 0)}
+    if (d == 2) {floatfence (960, 0)}
+    if (e == 0) {addtreat ()}
+    if (e == 1) {regularfence (1280, 0)}
+  }
 }
 
 // Clears the canvas and redraws sprites at their current coordinates.
