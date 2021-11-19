@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <HTML>
 <head>
@@ -380,8 +381,14 @@ setInterval (drawframe, delay);
 function resetgame () {
   gameover = 0;
   fencex = 1200;
-  round = 0;
-  score = 0;
+  if (score < 1000) {
+    round = 0;
+    score = 0;
+  }
+  if (score > 999) {
+    round = 1;
+    score = 1141;
+  }
   treaty = (fencey + 10);
 }
 
