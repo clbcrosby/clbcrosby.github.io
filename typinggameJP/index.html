@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>たのしいタイピング</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    img { width: 300px; height: auto; margin: 20px; display: block; margin-left: auto; margin-right: auto; }
+    input { font-size: 18px; padding: 5px; width: 200px; }
+    .message { margin-top: 10px; font-size: 18px; }
+    .timer { font-size: 20px; margin-top: 10px; color: #555; }
+    #progressBarContainer {
+      width: 80%;
+      height: 20px;
+      background-color: #ddd;
+      border-radius: 10px;
+      margin: 15px auto;
+    }
+    #progressBar {
+      height: 100%;
+      width: 0%;
+      background-color: #4CAF50;
+      border-radius: 10px;
+    }
+    #correctWordDisplay {
+      font-size: 22px;
+      margin-top: 10px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>たのしいタイピング！　ひらがな</h1>
+  
+  <!-- Buttons for Mode Selection -->
+  <div>
+    <button onclick="startGame('challenge')">テストモード</button>
+    <button onclick="startGame('practice')">れんしゅうモード</button>
+  </div>
+
+  <!-- Timer -->
+  <div class="timer" id="timer">Time: 0s</div>
+
+  <!-- Progress Bar -->
+  <div id="progressBarContainer">
+    <div id="progressBar"></div>
+  </div>
+
+  <!-- Image and Word Display -->
+  <img id="vocabImage" src="" alt="Vocabulary">
+  <div id="correctWordDisplay"></div>
+
+  <!-- Answer Input -->
+  <input type="text" id="answerInput" placeholder="Type the word..." autofocus>
+  <div class="message" id="messageBox"></div>
+
+  <script>
+    const originalVocab = [
+      { image: "images/ねこ.png", word: "ねこ" },
+      { image: "images/いぬ.png", word: "いぬ" },
+      { image: "images/りんご.png", word: "りんご" },
+      { image: "images/ばなな.png", word: "ばなな" },
+      { image: "images/ばす.png", word: "ばす" }
+    ];
+
+    let vocab = [];
+    let index = 0;
+    let startTime;
+    let timerInterval;
+    let mode = 'challenge';
+
+    const image = document.getElementById("vocabImage");
+    const input = document.getElementById("answerInput");
+    const message = document.getElementById("messageBox");
+    const timerDisplay = document.getElementById("timer");
+    const correctWordDisplay = document.getElementById("correctWordDisplay");
+    const progressBar = document.getElementById("progressBar");
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function startTimer() {
+      startTime = Date.now();
+      timerInterval = setInterval(() => {
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        timerDisplay.textContent = `Time: ${elapsed}s`;
+      }, 1000);
+    }
+
+    function stopTimer() {
+      clearInterval(timerInterval);
+    }
+
+    function updateProgressBar() {
+      const progress = ((index / vocab.length) * 100).toFixed(0);
+      progressBar.style.width = `${progress}%`;
+    }
+
+    function loadWord() {
+      if (index === 0) startTimer();
+
+      if (index < vocab.length) {
+        const current = vocab[index];
+        image.src = current.image;
+        input.value = "";
+        message.textContent = "";
+        correctWordDisplay.textContent = mode === "practice" ? current.word : "";
+        input.disabled = false;
+        input.focus();
+        updateProgressBar();
+      } else {
+        stopTimer();
+        const totalTime = Math.floor((Date.now() - startTime) / 1000);
+        message.textContent = `🎉 よくできました！ ${totalTime} でできました！`;
+        message.style.color = "blue";
+        input.disabled = true;
+        correctWordDisplay.textContent = "";
+        updateProgressBar();
+      }
+    }
+
+    function checkAnswer(userInput) {
+      const correctAnswer = vocab[index].word;
+      if (userInput === correctAnswer) {
+        message.textContent = "✅ やった！";
+        message.style.color = "green";
+        index++;
+        setTimeout(loadWord, 800);
+      } else {
+        message.textContent = "❌ ちがいます。";
+        message.style.color = "red";
+      }
+    }
+
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" && !input.disabled) {
+        const userAnswer = input.value.trim().toLowerCase();
+        checkAnswer(userAnswer);
+      }
+    });
+
+    function startGame(selectedMode) {
+      mode = selectedMode;
+      vocab = [...originalVocab]; // Copy fresh
+      shuffle(vocab);
+      index = 0;
+      message.textContent = "";
+      correctWordDisplay.textContent = "";
+      input.disabled = false;
+      stopTimer();
+      timerDisplay.textContent = "Time: 0s";
+      progressBar.style.width = "0%";
+      loadWord();
+    }
+
+    // Default to challenge mode on first load
+    window.onload = () => startGame("challenge");
+  </script>
+
+</body>
+</html>
