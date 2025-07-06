@@ -4,17 +4,37 @@
   <meta charset="UTF-8">
   <title>ESL Typing Game</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
     button {
       margin: 10px;
       padding: 10px 20px;
       font-size: 16px;
       cursor: pointer;
     }
-    img { width: 300px; height: auto; margin: 20px; display: block; margin-left: auto; margin-right: auto; }
-    input { font-size: 18px; padding: 5px; width: 200px; }
-    .message { margin-top: 10px; font-size: 18px; }
-    .timer { font-size: 20px; margin-top: 10px; color: #555; }
+    img {
+      width: 300px;
+      height: auto;
+      margin: 20px auto;
+      display: block;
+    }
+    input {
+      font-size: 18px;
+      padding: 5px;
+      width: 200px;
+    }
+    .message {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+    .timer {
+      font-size: 20px;
+      margin-top: 10px;
+      color: #555;
+    }
     #progressBarContainer {
       width: 80%;
       height: 20px;
@@ -38,7 +58,7 @@
 <body>
 
   <h1>ESL Typing Game</h1>
-  
+
   <!-- Buttons for Mode Selection -->
   <div>
     <button onclick="startGame('challenge')">Challenge Mode</button>
@@ -74,6 +94,7 @@
     let index = 0;
     let startTime;
     let timerInterval;
+    let timerStarted = false;
     let mode = 'challenge';
 
     const image = document.getElementById("vocabImage");
@@ -108,8 +129,6 @@
     }
 
     function loadWord() {
-      if (index === 0) startTimer();
-
       if (index < vocab.length) {
         const current = vocab[index];
         image.src = current.image;
@@ -122,7 +141,7 @@
       } else {
         stopTimer();
         const totalTime = Math.floor((Date.now() - startTime) / 1000);
-        message.textContent = `🎉 Well done! You finished in ${totalTime} seconds.`;
+        message.textContent = `🎉 Good job! 🎉 You finished in ${totalTime} seconds.`;
         message.style.color = "blue";
         input.disabled = true;
         correctWordDisplay.textContent = "";
@@ -144,6 +163,11 @@
     }
 
     input.addEventListener("keydown", function (event) {
+      if (!timerStarted) {
+        startTimer();
+        timerStarted = true;
+      }
+
       if (event.key === "Enter" && !input.disabled) {
         const userAnswer = input.value.trim().toLowerCase();
         checkAnswer(userAnswer);
@@ -152,7 +176,7 @@
 
     function startGame(selectedMode) {
       mode = selectedMode;
-      vocab = [...originalVocab]; // Copy fresh
+      vocab = [...originalVocab];
       shuffle(vocab);
       index = 0;
       message.textContent = "";
@@ -161,10 +185,10 @@
       stopTimer();
       timerDisplay.textContent = "Time: 0s";
       progressBar.style.width = "0%";
+      timerStarted = false;
       loadWord();
     }
 
-    // Default to challenge mode on first load
     window.onload = () => startGame("challenge");
   </script>
 
