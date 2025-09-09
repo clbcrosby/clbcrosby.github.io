@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Othello Quiz Board - Full Othello Rules</title>
+  <style>
+    :root{
+      --bg:#d9bba0; /* light wood */
+      --board-green:#2f7a3a;
+      --line:#113311;
+      --panel-bg: rgba(255,255,255,0.35);
+      --square-size: min(8vw,64px);
+      --legal-dot-size:10px;
+    }
+    html,body{height:100%;}
+    body{
+      margin:0; padding:20px; box-sizing:border-box; font-family:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, #e8cfae 0%, #d7b48f 100%);
+      display:flex; align-items:flex-start; justify-content:center; color:#111;
+    }
+    .wrapper{
+      display:grid; grid-template-columns: 180px 1fr 180px; gap:18px; align-items:start; width:100%; max-width:1200px;
+    }
+    /* Panels */
+    .panel{background:var(--panel-bg); border-radius:12px; padding:14px; box-shadow:0 4px 10px rgba(0,0,0,0.08); display:flex; align-items:center; gap:12px; justify-content:center;}
+    .panel .disc-mini{width:44px; height:44px; border-radius:50%; box-shadow:0 2px 3px rgba(0,0,0,0.2);}
+    .panel .count{font-size:36px; font-weight:700;}
+    .left .disc-mini{background:#000; border:3px solid #222;}
+    .right .disc-mini{background:#fff; border:3px solid #eee;}
+
+    /* Board container */
+    .board-wrap{display:flex; flex-direction:column; align-items:center; gap:12px;}
+    .board{background:linear-gradient(#2f7a3a,#22602f); padding:12px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.15);}
+    .grid{
+      display:grid; grid-template-columns: repeat(8, var(--square-size)); grid-template-rows: repeat(8, var(--square-size)); gap:4px;
+    }
+    .square{background:linear-gradient(#2f7a3a,#2b6b36); border-radius:6px; border:2px solid rgba(0,0,0,0.18); position:relative; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:12px; color:#fff; font-weight:700;}
+    .square.green{ }
+    .disc{width:76%; height:76%; border-radius:50%; box-shadow:inset 0 -6px 8px rgba(0,0,0,0.25), 0 2px 4px rgba(0,0,0,0.2);}
+    .disc.black{background:#000; border:3px solid #111;}
+    .disc.white{background:#fff; border:3px solid #ddd;}
+    .coord{position:absolute; bottom:4px; right:6px; font-size:10px; color:rgba(255,255,255,0.9); pointer-events:none;}
+    .legal-dot{position:absolute; width:var(--legal-dot-size); height:var(--legal-dot-size); border-radius:50%; bottom:6px; left:6px; background:rgba(255,255,255,0.9); box-shadow:0 1px 2px rgba(0,0,0,0.2); display:none;}
+    .square.legal .legal-dot{display:block}
+
+    /* Question area */
+    .question-area{min-height:64px; background:rgba(255,255,255,0.95); border-radius:8px; padding:12px 14px; width:100%; box-shadow:0 4px 10px rgba(0,0,0,0.06);}
+    .question-text{font-size:16px;}
+
+    /* Controls */
+    .controls{display:flex; gap:8px; align-items:center;}
+    button{background:#fff; border:1px solid rgba(0,0,0,0.08); padding:8px 12px; border-radius:8px; cursor:pointer;}
+
+    /* Turn indicator */
+    .turn-indicator{display:flex; align-items:center; gap:10px;}
+    .turn-disc{width:28px; height:28px; border-radius:50%; box-shadow:0 2px 3px rgba(0,0,0,0.2);}
+    .turn-text{font-weight:700}
+
+    /* Instructions */
+    .small{font-size:13px; color:#222; opacity:0.9}
+
+    /* Responsive */
+    @media (max-width:880px){
+      .wrapper{grid-template-columns: 1fr; grid-auto-rows: auto;}
+      .panel{justify-content:flex-start}
+      .board-wrap{order:2}
+      .left{order:1}
+      .right{order:3}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="panel left">
+      <div class="disc-mini" aria-hidden></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-start">
+        <div class="small">Black controls</div>
+        <div class="count" id="blackCount">0</div>
+      </div>
+    </div>
+
+    <div class="board-wrap">
+      <div style="display:flex; width:100%; justify-content:space-between; align-items:center; margin-bottom:6px;">
+        <div class="small">Click any green square to reveal a question. Then click a green square to place the current player's disc (only legal moves allowed).</div>
+        <div class="controls">
+          <div class="turn-indicator" id="turnIndicator">
+            <div class="turn-disc" id="turnDisc" style="background:#000; border:3px solid #111"></div>
+            <div class="turn-text" id="turnText">Black's turn</div>
+          </div>
+          <button id="resetBtn">Reset Board</button>
+          <button id="downloadBtn">Download .html</button>
+        </div>
+      </div>
+
+      <div class="board" role="application" aria-label="Othello quiz board">
+        <div class="grid" id="grid"></div>
+      </div>
+
+      <div style="margin-top:10px; width:100%;">
+        <div class="question-area" id="questionArea">
+          <div class="question-text" id="questionText">Click a green square to start. Black goes first.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel right">
+      <div class="disc-mini" aria-hidden style="background:#fff; border:3px solid #eee"></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-start">
+        <div class="small">White controls</div>
+        <div class="count" id="whiteCount">0</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ======== Questions (64 placeholders) ========
+    const QUESTIONS = [
+      "What color do you like?", "What's your favorite food?", "Do you prefer cats or dogs?", "What's a hobby you enjoy?",
+      "Which season do you like best?", "What's your favorite movie?", "Tea or coffee?", "What's your hometown?",
+      "What's your favorite sport?", "Do you like reading books?", "What's a place you'd like to visit?", "What's your favorite song?",
+      "Do you prefer mountains or beaches?", "What's your favorite game?", "Chocolate or vanilla?", "What's your favorite animal?",
+      "What's a skill you'd like to learn?", "What's your favorite school subject?", "What's your favorite fruit?", "What's your favorite time of day?",
+      "What's your favorite season?", "What's one thing that makes you happy?", "What do you like to do on weekends?", "What's your favorite snack?",
+      "What's your favorite TV show?", "What's your favorite holiday?", "Do you prefer early mornings or late nights?", "What's your favorite dessert?",
+      "What's a language you'd like to learn?", "What's your favorite drink?", "What's a movie you can watch again and again?", "What's your favorite subject in school?",
+      "What's something you collect?", "What's your favorite restaurant?", "What's your favorite app?", "What's a skill you're proud of?",
+      "What's your favorite way to relax?", "What's your dream job?", "What's something you'd like to try?", "What's your favorite vegetable?",
+      "What's your favorite place in your town?", "What's a memory that makes you smile?", "What's your favorite outfit?", "What's your favorite board game?",
+      "What's your favorite pizza topping?", "What's a nickname you have?", "What's your favorite color combination?", "What's a hobby you want to pick up?",
+      "What's your favorite podcast?", "What's your favorite way to exercise?", "What's a book you'd recommend?", "What's your favorite subject to teach?",
+      "What's your favorite thing about your country?", "What's your favorite childhood game?", "What's your favorite ice cream flavor?", "What's your favorite scent?",
+      "What's a tradition you like?", "What's your favorite way to spend a day off?", "What's something you're curious about?", "What's your favorite quote?",
+      "What's your favorite thing to cook?", "What's a fun fact about you?"
+    ];
+
+    // Game state
+    const EMPTY = 'green', BLACK = 'black', WHITE = 'white';
+    let currentPlayer = BLACK; // black goes first
+    let questionPool = shuffle(Array.from(QUESTIONS));
+    let questionIndex = 0;
+    let questionActive = false;
+    let lastQuestion = '';
+
+    const gridEl = document.getElementById('grid');
+    const questionText = document.getElementById('questionText');
+    const questionArea = document.getElementById('questionArea');
+    const blackCountEl = document.getElementById('blackCount');
+    const whiteCountEl = document.getElementById('whiteCount');
+    const resetBtn = document.getElementById('resetBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const turnDisc = document.getElementById('turnDisc');
+    const turnText = document.getElementById('turnText');
+
+    const SQUARES = [];
+    // create grid + coordinates
+    for(let row=0; row<8; row++){
+      for(let col=0; col<8; col++){
+        const i = row*8 + col;
+        const sq = document.createElement('div');
+        sq.className = 'square green';
+        sq.dataset.state = EMPTY;
+        sq.dataset.index = i;
+        const coord = String.fromCharCode(65+col)+(row+1);
+        const coordEl = document.createElement('div');
+        coordEl.className = 'coord';
+        coordEl.textContent = coord;
+        const legalDot = document.createElement('div');
+        legalDot.className = 'legal-dot';
+        sq.appendChild(legalDot);
+        sq.appendChild(coordEl);
+        sq.addEventListener('click', onSquareClick);
+        gridEl.appendChild(sq);
+        SQUARES.push(sq);
+      }
+    }
+
+    // Directions for flipping
+    const DIRS = [ -8, -7, 1, 9, 8, 7, -1, -9 ]; // N, NE, E, SE, S, SW, W, NW (row-major indexing)
+
+    // place initial 4 pieces
+    function setupInitial(){
+      SQUARES.forEach(sq=>{ sq.dataset.state = EMPTY; sq.innerHTML = ''; const coord = String.fromCharCode(65+(sq.dataset.index%8)) + (Math.floor(sq.dataset.index/8)+1); const coordEl = document.createElement('div'); coordEl.className='coord'; coordEl.textContent = coord; const legalDot = document.createElement('div'); legalDot.className='legal-dot'; sq.appendChild(legalDot); sq.appendChild(coordEl); sq.classList.add('green'); });
+      // Standard Othello start (indexes): 27=D4(3,3),28=E4(3,4),35=D5(4,3),36=E5(4,4)
+      placeDiscAtIndex(27, WHITE, /*skipQuestion=*/true);
+      placeDiscAtIndex(28, BLACK, true);
+      placeDiscAtIndex(35, BLACK, true);
+      placeDiscAtIndex(36, WHITE, true);
+      currentPlayer = BLACK;
+      questionPool = shuffle(Array.from(QUESTIONS));
+      questionIndex = 0;
+      questionActive = false;
+      lastQuestion = '';
+      updateCounts();
+      updateTurnIndicator();
+      updateLegalMovesHighlights();
+      questionText.textContent = 'Click a green legal square to reveal a question. Then click a legal square to place the current player\'s disc.';
+    }
+
+    setupInitial();
+
+    function onSquareClick(e){
+      const sq = e.currentTarget;
+      const state = sq.dataset.state;
+      const idx = Number(sq.dataset.index);
+
+      if(questionActive){
+        // while question is visible: clicking a green square attempts to place for currentPlayer
+        if(state === EMPTY){
+          if(isLegalMove(idx, currentPlayer)){
+            // place and flip
+            placeDiscAtIndex(idx, currentPlayer, /*skipQuestion=*/false);
+            clearQuestion();
+            postMoveSwitch();
+          } else {
+            // illegal move attempt
+            flashQuestionMessage('Illegal move — that square does not flip any opponent discs.');
+          }
+        }
+        return;
+      }
+
+      // no question active: clicking a green square should show a question only if the square is a legal move
+      if(state === EMPTY){
+        if(isLegalMove(idx, currentPlayer)){
+          showNextQuestion();
+        } else {
+          flashQuestionMessage('Not a legal move for ' + (currentPlayer===BLACK? 'Black':'White') + '.');
+        }
+        return;
+      }
+
+      // clicking on discs does nothing under full Othello rules
+    }
+
+    // place disc at index (skipping question flow when initializing)
+    function placeDiscAtIndex(idx, color, skipQuestion){
+      const sq = SQUARES[idx];
+      sq.innerHTML = '';
+      const d = document.createElement('div');
+      d.className = 'disc ' + color;
+      sq.appendChild(d);
+      sq.dataset.state = color;
+      sq.classList.remove('green');
+      updateCounts();
+    }
+
+    function showNextQuestion(){
+      if(questionIndex >= questionPool.length){
+        questionPool = shuffle(Array.from(QUESTIONS));
+        questionIndex = 0;
+      }
+      const q = questionPool[questionIndex++];
+      lastQuestion = q;
+      questionText.textContent = q;
+      questionActive = true;
+      questionArea.style.boxShadow = '0 6px 18px rgba(0,0,0,0.2)';
+    }
+
+    function clearQuestion(){
+      questionText.textContent = 'Click a green legal square to reveal a question.';
+      questionActive = false;
+      questionArea.style.boxShadow = '';
+    }
+
+    function flashQuestionMessage(msg){
+      const prev = questionText.textContent;
+      questionText.textContent = msg;
+      setTimeout(()=>{
+        // restore either last question or default
+        questionText.textContent = questionActive? lastQuestion : 'Click a green legal square to reveal a question.';
+      },1200);
+    }
+
+    function updateCounts(){
+      let black=0, white=0;
+      SQUARES.forEach(sq=>{
+        if(sq.dataset.state === BLACK) black++;
+        if(sq.dataset.state === WHITE) white++;
+      });
+      blackCountEl.textContent = black;
+      whiteCountEl.textContent = white;
+    }
+
+    // Othello logic: check legality and get flips
+    function getFlips(idx, player){
+      const opponent = (player===BLACK)? WHITE : BLACK;
+      const flips = [];
+      const row = Math.floor(idx/8);
+      const col = idx%8;
+
+      for(const d of DIRS){
+        let n = idx + d;
+        const line = [];
+        // boundary check function for directions that wrap rows
+        while(n>=0 && n<64){
+          const nrow = Math.floor(n/8);
+          const ncol = n%8;
+          // detect wrap-around for horizontal and diagonal moves
+          if(Math.abs(ncol - ( (n-d)%8 )) > 1 && Math.abs(d)===1) break; // safety but not necessary
+
+          if(SQUARES[n].dataset.state === opponent){
+            line.push(n);
+            n += d;
+          } else {
+            if(SQUARES[n].dataset.state === player && line.length>0){
+              flips.push(...line);
+            }
+            break;
+          }
+        }
+      }
+      return flips;
+    }
+
+    function isLegalMove(idx, player){
+      if(SQUARES[idx].dataset.state !== EMPTY) return false;
+      const flips = getFlips(idx, player);
+      return flips.length > 0;
+    }
+
+    function applyMove(idx, player){
+      const flips = getFlips(idx, player);
+      if(flips.length === 0) return false;
+      // place player's disc
+      placeDiscAtIndex(idx, player, true);
+      // flip each
+      for(const f of flips){
+        placeDiscAtIndex(f, player, true);
+      }
+      updateCounts();
+      return true;
+    }
+
+    function postMoveSwitch(){
+      // switch player
+      currentPlayer = (currentPlayer === BLACK)? WHITE : BLACK;
+      updateTurnIndicator();
+      updateLegalMovesHighlights();
+
+      // check if next player has any legal moves
+      const nextLegal = anyLegalMoves(currentPlayer);
+      if(!nextLegal){
+        // pass back if current player (after switch) has no moves
+        const prev = (currentPlayer === BLACK)? WHITE : BLACK;
+        if(anyLegalMoves(prev)){
+          // auto-pass
+          flashQuestionMessage((currentPlayer===BLACK? 'Black':'White') + ' has no legal moves. Passing back.');
+          // switch back
+          currentPlayer = prev;
+          updateTurnIndicator();
+          updateLegalMovesHighlights();
+        } else {
+          // game over
+          handleGameOver();
+        }
+      }
+    }
+
+    function anyLegalMoves(player){
+      for(let i=0;i<64;i++){
+        if(isLegalMove(i, player)) return true;
+      }
+      return false;
+    }
+
+    function updateLegalMovesHighlights(){
+      for(let i=0;i<64;i++){
+        if(SQUARES[i].dataset.state === EMPTY && isLegalMove(i, currentPlayer)){
+          SQUARES[i].classList.add('legal');
+        } else {
+          SQUARES[i].classList.remove('legal');
+        }
+      }
+    }
+
+    function updateTurnIndicator(){
+      if(currentPlayer === BLACK){
+        turnDisc.style.background = '#000';
+        turnDisc.style.border = '3px solid #111';
+        turnText.textContent = "Black's turn";
+      } else {
+        turnDisc.style.background = '#fff';
+        turnDisc.style.border = '3px solid #ddd';
+        turnText.textContent = "White's turn";
+      }
+    }
+
+    function handleGameOver(){
+      updateCounts();
+      const black = Number(blackCountEl.textContent);
+      const white = Number(whiteCountEl.textContent);
+      let msg = 'Game over. ';
+      if(black>white) msg += `Black wins ${black}–${white}`;
+      else if(white>black) msg += `White wins ${white}–${black}`;
+      else msg += `It's a tie ${black}–${white}`;
+      questionText.textContent = msg;
+      // clear legal highlights
+      for(const s of SQUARES) s.classList.remove('legal');
+    }
+
+    // Reset behavior
+    resetBtn.addEventListener('click', ()=>{
+      setupInitial();
+    });
+
+    // Download current HTML file
+    downloadBtn.addEventListener('click', ()=>{
+      const doc = `<!doctype html>\n${document.documentElement.outerHTML}`;
+      const blob = new Blob([doc], {type: 'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'othello_quiz.html';
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    // Utility: shuffle
+    function shuffle(arr){
+      for(let i=arr.length-1;i>0;i--){
+        const j = Math.floor(Math.random()*(i+1));
+        [arr[i],arr[j]] = [arr[j],arr[i]];
+      }
+      return arr;
+    }
+
+    // keyboard: Esc clears question
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape' && questionActive){
+        clearQuestion();
+      }
+    });
+
+  </script>
+</body>
+</html>
